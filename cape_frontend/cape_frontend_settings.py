@@ -1,0 +1,34 @@
+import os
+from sanic.config import LOGGING
+
+# Remove file and syslog logging, handled from stdout
+LOGGING['handlers'].pop('errorTimedRotatingFile', None)
+LOGGING['handlers'].pop('accessTimedRotatingFile', None)
+LOGGING['handlers'].pop('accessSysLog', None)
+LOGGING['handlers'].pop('errorSysLog', None)
+
+# Remove redundant logs
+LOGGING['loggers']['network']['handlers'] = ['accessStream']
+LOGGING['loggers']['sanic']['handlers'] = ['internal']
+# TODO : need to stdout logs :
+# LOGGING['loggers']['application'] = {'level': 'DEBUG', 'handlers': ['sentry']}
+LOGGING['root'] = {'handlers': ['errorStream']}
+
+THIS_FOLDER = os.path.abspath(os.path.join(os.path.dirname(__file__)))
+STATIC_FOLDER = os.path.join(THIS_FOLDER, 'static')
+HTML_INDEX_STATIC_FILE = os.path.join(STATIC_FOLDER, 'index.html')
+INTERNAL_API_DOC_FOLDER = os.path.join(STATIC_FOLDER, 'documentation')
+
+
+def envint(varname: str, default: int) -> int:
+    return int(os.getenv(varname, default))
+
+
+# SERVER configuration
+CONFIG_SERVER = dict(
+    host=os.getenv("CAPE_FRONTEND_HOST", "0.0.0.0"),
+    port=envint("CAPE_WEBSERVICE_PORT", 5050),
+    debug=True, workers=1, log_config=LOGGING,
+)
+
+HOSTNAME = os.getenv('HOSTNAME')
