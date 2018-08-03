@@ -71,6 +71,8 @@ def wait_for_backend():
         if not demo_user_created:
             create_demo_user(current_url)
         client = CapeClient(current_url)
+        client.login(cape_frontend_settings.DEMO_USER_LOGIN, cape_frontend_settings.DEMO_USER_PASSWORD)
+
         client.answer(question="How many people were present ?",
                       text="Yesterday at the demonstration, 500 people assisted the event.")
     log("All backends started")
