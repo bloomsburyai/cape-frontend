@@ -61,7 +61,7 @@ def wait_for_backend():
         current_url = backends_left.pop()
         try:
             reachable = requests.get(current_url[:-4], timeout=1).status_code == 200
-        except requests.exceptions.Timeout:
+        except Exception:
             reachable = False
         if not reachable:
             log(f'Could not reach backend {current_url}, retrying ...')
