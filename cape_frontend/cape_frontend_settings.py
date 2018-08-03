@@ -27,8 +27,14 @@ def envint(varname: str, default: int) -> int:
 # SERVER configuration
 CONFIG_SERVER = dict(
     host=os.getenv("CAPE_FRONTEND_HOST", "0.0.0.0"),
-    port=envint("CAPE_WEBSERVICE_PORT", 5050),
+    port=envint("CAPE_WEBSERVICE_PORT", 5051),
     debug=True, workers=1, log_config=LOGGING,
 )
 
 HOSTNAME = os.getenv('HOSTNAME')
+BACKENDS_API_URL = ['https://localhost:5050/api']
+WAIT_FOR_BACKENDS = os.getenv("CAPE_FRONTEND_WAIT_FOR_BACKEND", "True").lower() == 'true'
+DEMO_USER_LOGIN = 'demo'
+DEMO_USER_TOKEN = 'demo'
+DEMO_USER_PASSWORD = 'REPLACEME'
+BACKEND_SUPER_ADMIN_TOKEN = 'REPLACEME'

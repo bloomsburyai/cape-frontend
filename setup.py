@@ -27,6 +27,7 @@ setup(
         'pytest==3.6.4',
         'requests==2.18.1',
         'sanic==0.6.0',
+        'cape.client==0.2.0',
         'cape_api_helpers==' + _get_github_sha(
             'git+https://github.com/bloomsburyai/cape-api-helpers#egg=cape_api_helpers'),
     ],

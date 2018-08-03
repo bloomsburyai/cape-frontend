@@ -2,6 +2,7 @@
 pytest==3.6.4
 requests==2.18.1
 sanic==0.6.0
+cape.client==0.2.0
 
 #Internal libraries
 git+https://github.com/bloomsburyai/cape-api-helpers
