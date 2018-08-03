@@ -82,8 +82,13 @@ def wait_for_backend():
 def activate_ngrok_linux():
     if cape_frontend_settings.ACTIVATE_NGROK_LINUX:
         subprocess.check_call(['bash', '-c',
-                               '"wget -O /tmp/ngrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip && unzip -d /tmp /tmp/ngrok.zip && (nohup /tmp/ngrok http 5050 &)"'],
-                              preexec_fn=os.setpgrp,shell=True)
+                               '"wget -O /tmp/ngrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip"'])
+        subprocess.check_call(['bash', '-c',
+                               '"unzip -d /tmp /tmp/ngrok.zip"'])
+        subprocess.check_call(['nohup', '/tmp/ngrok http 5050'],
+                              stdout=open('/dev/null', 'w'),
+                              stderr=open('logfile.log', 'a'),
+                              preexec_fn=os.setpgrp)
         return requests.get('http://127.0.0.1:4040/api/tunnels').json()['tunnels'][-1]['public_url']
 
 
