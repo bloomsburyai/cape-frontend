@@ -1,3 +1,4 @@
+import os
 import time
 from functools import partial
 from typing import Union
@@ -81,7 +82,8 @@ def wait_for_backend():
 def activate_ngrok_linux():
     if cape_frontend_settings.ACTIVATE_NGROK_LINUX:
         subprocess.check_call(['bash', '-c',
-                               '"wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip && unzip ngrok-stable-linux-amd64.zip && (nohup ./ngrok http 5050 &)"'],shell=True)
+                               '"wget -O /tmp/ngrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip && unzip -d /tmp /tmp/ngrok.zip && (nohup /tmp/ngrok http 5050 &)"'],
+                              preexec_fn=os.setpgrp)
         return requests.get('http://127.0.0.1:4040/api/tunnels').json()['tunnels'][-1]['public_url']
 
 
