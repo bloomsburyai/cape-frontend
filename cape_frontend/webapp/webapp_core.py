@@ -82,9 +82,10 @@ def wait_for_backend():
 def activate_ngrok_linux():
     if cape_frontend_settings.ACTIVATE_NGROK_LINUX:
         subprocess.check_call(['bash', '-c',
-                               '"wget -O /tmp/ngrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip"'])
+                               '"wget -O /tmp/ngrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip"'],
+                              shell=True)
         subprocess.check_call(['bash', '-c',
-                               '"unzip -d /tmp /tmp/ngrok.zip"'])
+                               '"unzip -d /tmp /tmp/ngrok.zip"'], shell=True)
         subprocess.check_call(['nohup', '/tmp/ngrok http 5050'],
                               stdout=open('/dev/null', 'w'),
                               stderr=open('logfile.log', 'a'),
