@@ -1,4 +1,5 @@
 import time
+from functools import partial
 from typing import Union
 from sanic import Sanic
 from cape_frontend import cape_frontend_settings
@@ -11,7 +12,9 @@ from cape_frontend.webapp.mocks.unlucky.unlucky_core import mock_unlucky_endpoin
 from cape_frontend.webapp.mocks.timeout.timeout_core import mock_timeout_endpoints
 from cape_frontend.webapp.mocks.error.error_core import mock_error_endpoints
 from cape.client import CapeClient
+from cape_frontend.webapp.welcome_message import WELCOME_MESSAGE
 from pathlib import Path
+import subprocess
 
 import asyncio
 import requests
@@ -73,9 +76,27 @@ def wait_for_backend():
     log("All backends started")
 
 
-async def welcome_message():
+def activate_ngrok_linux():
+    if cape_frontend_settings.ACTIVATE_NGROK_LINUX:
+        subprocess.check_call(['bash', '-c',
+                               '"wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip && unzip ngrok-stable-linux-amd64.zip && (nohup ./ngrok http 5050 &)"'])
+        return requests.get('http://127.0.0.1:4040/api/tunnels').json()['tunnels'][-1]['public_url']
+
+
+async def display_welcome():
+    global WELCOME_MESSAGE
     await asyncio.sleep(0.5)
-    print("Welcome to Cape " * 30)
+    public_url = activate_ngrok_linux()
+    WELCOME_MESSAGE += f"""
+    Frontend locally available at :
+        http://localhost:{cape_frontend_settings.CONFIG_SERVER['port']}
+    """
+    if public_url:
+        WELCOME_MESSAGE += f"""
+    Frontend publicly available at (powered by ngrok) :
+        {public_url} 
+    """
+    log(WELCOME_MESSAGE)
 
 
 def run(port: Union[None, int] = None):
@@ -83,6 +104,7 @@ def run(port: Union[None, int] = None):
         cape_frontend_settings.CONFIG_SERVER['port'] = int(port)
     log("Using port", cape_frontend_settings.CONFIG_SERVER['port'])
     wait_for_backend()
+    activate_ngrok_linux()
     app.config.LOGO = None
-    app.add_task(welcome_message())
+    app.add_task(display_welcome)
     app.run(**cape_frontend_settings.CONFIG_SERVER)
