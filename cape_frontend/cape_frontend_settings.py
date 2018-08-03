@@ -32,7 +32,7 @@ CONFIG_SERVER = dict(
 )
 
 HOSTNAME = os.getenv('HOSTNAME')
-BACKENDS_API_URL = ['https://localhost:5050/api']
+BACKENDS_API_URL = ['http://localhost:5050/api']
 WAIT_FOR_BACKENDS = os.getenv("CAPE_FRONTEND_WAIT_FOR_BACKEND", "True").lower() == 'true'
 #requires bash,wget and unzip :
 ACTIVATE_NGROK_LINUX = os.getenv("CAPE_FRONTEND_ACTIVATE_NGROK_LINUX", "True").lower() == 'true'

@@ -60,7 +60,7 @@ def wait_for_backend():
         log(f"Frontend waiting for backends to initialize {len(backends_left)}/{num_backends}")
         current_url = backends_left.pop()
         try:
-            reachable = requests.get(str(Path(current_url).parent), timeout=1).status_code == 200
+            reachable = requests.get(current_url[:-4], timeout=1).status_code == 200
         except requests.exceptions.Timeout:
             reachable = False
         if not reachable:
