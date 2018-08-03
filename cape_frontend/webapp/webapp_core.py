@@ -86,7 +86,7 @@ def activate_ngrok_linux():
                               shell=True)
         subprocess.check_call(['bash', '-c',
                                '"unzip -d /tmp /tmp/ngrok.zip"'], shell=True)
-        subprocess.check_call(['nohup', '/tmp/ngrok http 5050'],
+        subprocess.check_call(['nohup', '/tmp/ngrok', 'http', '5050'],
                               stdout=open('/dev/null', 'w'),
                               stderr=open('logfile.log', 'a'),
                               preexec_fn=os.setpgrp)
