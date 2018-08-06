@@ -1,6 +1,5 @@
 import os
 import time
-from functools import partial
 from typing import Union
 from sanic import Sanic
 from cape_frontend import cape_frontend_settings
@@ -14,7 +13,7 @@ from cape_frontend.webapp.mocks.timeout.timeout_core import mock_timeout_endpoin
 from cape_frontend.webapp.mocks.error.error_core import mock_error_endpoints
 from cape.client import CapeClient
 from cape_frontend.webapp.welcome_message import WELCOME_MESSAGE
-from pathlib import Path
+from urllib.parse import urlparse
 import subprocess
 
 import asyncio
@@ -78,42 +77,52 @@ def wait_for_backend():
     log("All backends started")
 
 
-def activate_ngrok_linux():
-    if cape_frontend_settings.ACTIVATE_NGROK_LINUX:
-        log("Activating ngrok forwarding...")
-        subprocess.check_call(
-            ['wget', '-O', '/tmp/ngrok.zip', 'https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip'],
-            stdout=open('/tmp/logfile.log', 'a'),
-            stderr=open('/tmp/logfile.log', 'a'),
-        )
-        subprocess.check_call(['unzip', '-d', '/tmp', '/tmp/ngrok.zip'],
-                              stdout=open('/tmp/logfile.log', 'a'),
-                              stderr=open('/tmp/logfile.log', 'a'),
-                              )
-        subprocess.Popen(['nohup', '/tmp/ngrok', 'http', '5050'],
-                         stdout=open('/tmp/logfile.log', 'a'),
-                         stderr=open('/tmp/logfile.log', 'a'),
-                         preexec_fn=os.setpgrp)
-        log("Forwarding activated...")
-        log("Waiting for ngrok to initialize...")
-        time.sleep(3)
-        log("Getting ngrok tunnel...")
-        return requests.get('http://127.0.0.1:4040/api/tunnels').json()['tunnels'][-1]['public_url']
+class NgrokActivator:
+    counter: int = 0
+
+    @staticmethod
+    def activate_ngrok_linux(port: int):
+        if cape_frontend_settings.ACTIVATE_NGROK_LINUX:
+            log(f"Activating ngrok forwarding for {port}...")
+            subprocess.check_call(
+                ['wget', '-O', '/tmp/ngrok.zip', 'https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip'],
+                stdout=open('/tmp/logfile.log', 'a'),
+                stderr=open('/tmp/logfile.log', 'a'),
+            )
+            subprocess.check_call(['unzip', '-d', '/tmp', '/tmp/ngrok.zip'],
+                                  stdout=open('/tmp/logfile.log', 'a'),
+                                  stderr=open('/tmp/logfile.log', 'a'),
+                                  )
+            subprocess.Popen(['nohup', '/tmp/ngrok', 'http', str(port)],
+                             stdout=open('/tmp/logfile.log', 'a'),
+                             stderr=open('/tmp/logfile.log', 'a'),
+                             preexec_fn=os.setpgrp)
+            log("Forwarding activated...")
+            log("Waiting for ngrok to initialize...")
+            time.sleep(3)
+            log("Getting ngrok tunnel...")
+            ngrok_local_server_port = 4040 + NgrokActivator.counter
+            NgrokActivator.counter += 1
+            return requests.get(f'http://127.0.0.1:{ngrok_local_server_port}/api/tunnels').json()['tunnels'][-1][
+                'public_url']
 
 
 async def display_welcome():
     global WELCOME_MESSAGE
     await asyncio.sleep(0.5)
-    public_url = activate_ngrok_linux()
+    public_url_frontend = NgrokActivator.activate_ngrok_linux(cape_frontend_settings.CONFIG_SERVER['port'])
     WELCOME_MESSAGE += f"""
     Frontend locally available at :
-        http://localhost:{cape_frontend_settings.CONFIG_SERVER['port']}
-    """
-    if public_url:
+        http://localhost:{cape_frontend_settings.CONFIG_SERVER['port']}"""
+    if public_url_frontend:
         WELCOME_MESSAGE += f"""
     Frontend publicly available at (powered by ngrok) :
-        {public_url} 
-    """
+        {public_url_frontend}"""
+    for idx, backend_url in enumerate(cape_frontend_settings.BACKENDS_API_URL):
+        public_backend_url = NgrokActivator.activate_ngrok_linux(urlparse(backend_url).port)
+        WELCOME_MESSAGE += f"""
+            Backend #{idx+1} publicly available at (powered by ngrok) :
+                {public_backend_url}"""
     log(WELCOME_MESSAGE)
 
 
