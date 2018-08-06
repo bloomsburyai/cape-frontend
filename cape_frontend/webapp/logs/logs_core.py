@@ -14,6 +14,6 @@ def is_sanic_static(response) -> bool:
 
 
 def log(*args, request=None, response=None, level='info', exc_info=False, sample_rate=None, **kwargs):
-    print(*args, str(kwargs), file=sys.stderr)
+    print(*args, str(kwargs) if kwargs else '', file=sys.stderr)
     if exc_info:
         print(traceback.format_exc())

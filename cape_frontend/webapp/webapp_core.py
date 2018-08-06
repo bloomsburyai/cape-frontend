@@ -73,7 +73,6 @@ def wait_for_backend():
             create_demo_user(current_url)
         client = CapeClient(current_url)
         client.login(cape_frontend_settings.DEMO_USER_LOGIN, cape_frontend_settings.DEMO_USER_PASSWORD)
-
         client.answer(question="How many people were present ?",
                       text="Yesterday at the demonstration, 500 people assisted the event.")
     log("All backends started")
@@ -82,19 +81,23 @@ def wait_for_backend():
 def activate_ngrok_linux():
     if cape_frontend_settings.ACTIVATE_NGROK_LINUX:
         log("Activating ngrok forwarding...")
-        subprocess.check_call(['wget','-O','/tmp/ngrok.zip','https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip'],
-                              stdout=open('/tmp/logfile.log', 'a'),
-                              stderr=open('/tmp/logfile.log', 'a'),
-                              )
-        subprocess.check_call(['unzip','-d','/tmp','/tmp/ngrok.zip'],
+        subprocess.check_call(
+            ['wget', '-O', '/tmp/ngrok.zip', 'https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip'],
+            stdout=open('/tmp/logfile.log', 'a'),
+            stderr=open('/tmp/logfile.log', 'a'),
+        )
+        subprocess.check_call(['unzip', '-d', '/tmp', '/tmp/ngrok.zip'],
                               stdout=open('/tmp/logfile.log', 'a'),
                               stderr=open('/tmp/logfile.log', 'a'),
                               )
         subprocess.Popen(['nohup', '/tmp/ngrok', 'http', '5050'],
-                              stdout=open('/tmp/logfile.log', 'a'),
-                              stderr=open('/tmp/logfile.log', 'a'),
-                              preexec_fn=os.setpgrp)
+                         stdout=open('/tmp/logfile.log', 'a'),
+                         stderr=open('/tmp/logfile.log', 'a'),
+                         preexec_fn=os.setpgrp)
         log("Forwarding activated...")
+        log("Waiting for ngrok to initialize...")
+        time.sleep(3)
+        log("Getting ngrok tunnel...")
         return requests.get('http://127.0.0.1:4040/api/tunnels').json()['tunnels'][-1]['public_url']
 
 
