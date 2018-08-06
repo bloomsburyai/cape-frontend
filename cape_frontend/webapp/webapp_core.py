@@ -118,16 +118,17 @@ class NgrokActivator:
 
 async def display_welcome():
     global WELCOME_MESSAGE
-    public_url_frontend = NgrokActivator.activate_ngrok_linux(cape_frontend_settings.CONFIG_SERVER['port'])
+    format_url = lambda base,backend: f'{base}/?configuration={{%22api%22:{{%22backendURL%22:%22{backend}/api%22,%22timeout%22:%221000%22}}#/'
     WELCOME_MESSAGE += f"""
     Frontend locally available at:
         http://localhost:{cape_frontend_settings.CONFIG_SERVER['port']}"""
+    public_url_frontend = NgrokActivator.activate_ngrok_linux(cape_frontend_settings.CONFIG_SERVER['port'])
+    backend_urls = [NgrokActivator.activate_ngrok_linux(urlparse(backend_url).port) + '/api'
+                    for idx, backend_url in enumerate(cape_frontend_settings.BACKENDS_API_URL)]
     if public_url_frontend:
         WELCOME_MESSAGE += f"""
     Frontend publicly available at (powered by ngrok):
-        {public_url_frontend}"""
-    backend_urls = [NgrokActivator.activate_ngrok_linux(urlparse(backend_url).port) + '/api'
-                    for idx, backend_url in enumerate(cape_frontend_settings.BACKENDS_API_URL)]
+        {format_url(public_url_frontend,backend_urls[0] if backend_urls else cape_frontend_settings.BACKENDS_API_URL[0])}"""
     if backend_urls:
         WELCOME_MESSAGE += f"""
         Using publicly available backends at (powered by ngrok): {' '.join(backend_urls)}"""
