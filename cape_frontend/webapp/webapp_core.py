@@ -122,7 +122,6 @@ def run(port: Union[None, int] = None):
         cape_frontend_settings.CONFIG_SERVER['port'] = int(port)
     log("Using port", cape_frontend_settings.CONFIG_SERVER['port'])
     wait_for_backend()
-    activate_ngrok_linux()
     app.config.LOGO = None
     app.add_task(display_welcome)
     app.run(**cape_frontend_settings.CONFIG_SERVER)
