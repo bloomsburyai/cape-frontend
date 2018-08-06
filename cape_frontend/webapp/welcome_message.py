@@ -15,4 +15,4 @@ WELCOME_MESSAGE = """
          /-._/-._/
          \   `\  \\
           `-._/._/
-Thank you for using Cape"""
+Thank you for using Cape !"""
