@@ -132,7 +132,7 @@ async def display_welcome():
         WELCOME_MESSAGE += f"""
         Using publicly available backends at (powered by ngrok) :{' '.join(backend_urls)}"""
     WELCOME_MESSAGE += f"""
-        Using backends at :{' '.join(cape_frontend_settings.BACKENDS_API_URL)}"""
+        Local backends at :{' '.join(cape_frontend_settings.BACKENDS_API_URL)}"""
     log(WELCOME_MESSAGE)
 
 
