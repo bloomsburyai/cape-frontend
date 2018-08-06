@@ -54,7 +54,7 @@ def create_demo_user(api_url):
 def wait_for_backend():
     if not cape_frontend_settings.WAIT_FOR_BACKENDS:
         return
-    demo_user_created = False
+    demo_user_created = not cape_frontend_settings.CREATE_DEMO_ACCOUNT_ON_INIT
     num_backends = len(cape_frontend_settings.BACKENDS_API_URL)
     backends_left = set(cape_frontend_settings.BACKENDS_API_URL)
     while backends_left:
