@@ -118,7 +118,6 @@ class NgrokActivator:
 
 async def display_welcome():
     global WELCOME_MESSAGE
-    # await asyncio.sleep(0.5)
     public_url_frontend = NgrokActivator.activate_ngrok_linux(cape_frontend_settings.CONFIG_SERVER['port'])
     WELCOME_MESSAGE += f"""
     Frontend locally available at :
@@ -127,15 +126,13 @@ async def display_welcome():
         WELCOME_MESSAGE += f"""
     Frontend publicly available at (powered by ngrok) :
         {public_url_frontend}"""
-    backend_urls = [NgrokActivator.activate_ngrok_linux(urlparse(backend_url).port)
+    backend_urls = [NgrokActivator.activate_ngrok_linux(urlparse(backend_url).port) + '/api'
                     for idx, backend_url in enumerate(cape_frontend_settings.BACKENDS_API_URL)]
     if backend_urls:
         WELCOME_MESSAGE += f"""
         Using publicly available backends at (powered by ngrok) :{' '.join(backend_urls)}"""
-    else:
-        WELCOME_MESSAGE += f"""
+    WELCOME_MESSAGE += f"""
         Using backends at :{' '.join(cape_frontend_settings.BACKENDS_API_URL)}"""
-
     log(WELCOME_MESSAGE)
 
 
