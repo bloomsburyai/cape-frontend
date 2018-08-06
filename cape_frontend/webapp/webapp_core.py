@@ -79,20 +79,30 @@ def wait_for_backend():
 
 class NgrokActivator:
     counter: int = 0
+    _installed: bool = False
+
+    @staticmethod
+    def _install_ngrok():
+        if NgrokActivator._installed:
+            return
+        log(f"Installing ngrok...")
+        subprocess.check_call(
+            ['wget', '-O', '/tmp/ngrok.zip', 'https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip'],
+            stdout=open('/tmp/logfile.log', 'a'),
+            stderr=open('/tmp/logfile.log', 'a'),
+        )
+        subprocess.check_call(['unzip', '-d', '/tmp', '/tmp/ngrok.zip'],
+                              stdout=open('/tmp/logfile.log', 'a'),
+                              stderr=open('/tmp/logfile.log', 'a'),
+                              )
+        NgrokActivator._installed = True
+        log("Done")
 
     @staticmethod
     def activate_ngrok_linux(port: int):
         if cape_frontend_settings.ACTIVATE_NGROK_LINUX:
+            NgrokActivator._install_ngrok()
             log(f"Activating ngrok forwarding for {port}...")
-            subprocess.check_call(
-                ['wget', '-O', '/tmp/ngrok.zip', 'https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip'],
-                stdout=open('/tmp/logfile.log', 'a'),
-                stderr=open('/tmp/logfile.log', 'a'),
-            )
-            subprocess.check_call(['unzip', '-d', '/tmp', '/tmp/ngrok.zip'],
-                                  stdout=open('/tmp/logfile.log', 'a'),
-                                  stderr=open('/tmp/logfile.log', 'a'),
-                                  )
             subprocess.Popen(['nohup', '/tmp/ngrok', 'http', str(port)],
                              stdout=open('/tmp/logfile.log', 'a'),
                              stderr=open('/tmp/logfile.log', 'a'),
@@ -101,10 +111,9 @@ class NgrokActivator:
             log("Waiting for ngrok to initialize...")
             time.sleep(3)
             log("Getting ngrok tunnel...")
-            ngrok_local_server_port = 4040 + NgrokActivator.counter
+            ngrok_local_server = f'http://127.0.0.1:{NgrokActivator.counter+4040}/api/tunnels'
             NgrokActivator.counter += 1
-            return requests.get(f'http://127.0.0.1:{ngrok_local_server_port}/api/tunnels').json()['tunnels'][-1][
-                'public_url']
+            return requests.get(ngrok_local_server).json()['tunnels'][-1]['public_url']
 
 
 async def display_welcome():
