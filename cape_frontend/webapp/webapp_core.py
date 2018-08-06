@@ -82,18 +82,15 @@ def wait_for_backend():
 def activate_ngrok_linux():
     if cape_frontend_settings.ACTIVATE_NGROK_LINUX:
         log("Activating ngrok forwarding...")
-        subprocess.check_call(['bash', '-c',
-                               '"wget -O /tmp/ngrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip"'],
-                              shell=True,
+        subprocess.check_call(['wget','-O','/tmp/ngrok.zip','https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip'],
                               stdout=open('/tmp/logfile.log', 'a'),
                               stderr=open('/tmp/logfile.log', 'a'),
                               )
-        subprocess.check_call(['bash', '-c',
-                               '"unzip -d /tmp /tmp/ngrok.zip"'], shell=True,
+        subprocess.check_call(['unzip','-d','/tmp','/tmp/ngrok.zip'],
                               stdout=open('/tmp/logfile.log', 'a'),
                               stderr=open('/tmp/logfile.log', 'a'),
                               )
-        subprocess.check_call(['nohup', '/tmp/ngrok', 'http', '5050'],
+        subprocess.Popen(['nohup', '/tmp/ngrok', 'http', '5050'],
                               stdout=open('/tmp/logfile.log', 'a'),
                               stderr=open('/tmp/logfile.log', 'a'),
                               preexec_fn=os.setpgrp)
