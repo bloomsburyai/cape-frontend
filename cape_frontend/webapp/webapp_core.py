@@ -2,8 +2,6 @@ import os
 import time
 from typing import Union
 from sanic import Sanic
-from sanic import Blueprint
-from functools import partial
 from cape_frontend import cape_frontend_settings
 from cape_frontend.webapp.logs.logs_core import log
 from cape_frontend.webapp.configuration.configuration_core import configuration_endpoints
@@ -21,9 +19,6 @@ import subprocess
 import asyncio
 import requests
 
-registration_endpoints = Blueprint('registration_endpoints')
-_endpoint_route = partial(registration_endpoints.route, methods=['GET', 'POST'])
-
 app = Sanic(__name__)
 app.blueprint(mock_timeout_endpoints)
 app.blueprint(mock_error_endpoints)
@@ -34,26 +29,8 @@ app.blueprint(configuration_endpoints)
 app.blueprint(mocks_endpoints)
 app.blueprint(mock_unlucky_endpoints)
 app.blueprint(mock_full_endpoints)
-app.blueprint(registration_endpoints)
 
 print("listing endpoints", app.router.routes_all.keys())
-
-@_endpoint_route('/api/user/register')
-def create_user(request):
-    api_url, username, password = request['args']['api_url'], request['args']['username'], request['args']['password']
-    log('Creating user')
-    client = CapeClient(api_url)
-    new_user_parameters = {'userId': username,
-                           'password': password,
-                           'superAdminToken': cape_frontend_settings.BACKEND_SUPER_ADMIN_TOKEN,
-                           }
-    url = 'user/create-user?'
-    for k, v in new_user_parameters.items():
-        url += "%s=%s&" % (k, v)
-    response = client._raw_api_call(url)
-    assert response.status_code == 200, "Could not create user"
-    client.login(username, password)
-    log(f'User created with token {client.get_user_token()}')
 
 
 def create_demo_user(api_url):
