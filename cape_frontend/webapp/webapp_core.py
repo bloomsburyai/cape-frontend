@@ -132,7 +132,10 @@ class NgrokActivator:
 
 async def display_welcome():
     global WELCOME_MESSAGE
-    format_url = lambda base,backend: f'{base}/?configuration={{%22api%22:{{%22backendURL%22:%22{backend}%22,%22timeout%22:%2215000%22}}#/'
+    api_version = '0.1'
+    # http://b8f7208d.ngrok.io/?configuration={%22api%22:{%22backendURL%22:%22https://30a33ee8.ngrok.io/api/0.1%22,%22timeout%22:%2215000%22}}#/
+
+    format_url = lambda base,backend,version: f'{base}/?configuration={{"api":{{"backendURL":"{backend}/{version}","timeout":"15000"}}}}#/'
     WELCOME_MESSAGE += f"""
     Frontend locally available at:
         http://localhost:{cape_frontend_settings.CONFIG_SERVER['port']}"""
@@ -142,7 +145,7 @@ async def display_welcome():
     if public_url_frontend:
         WELCOME_MESSAGE += f"""
     Frontend publicly available at (powered by ngrok):
-        {format_url(public_url_frontend,backend_urls[0] if backend_urls else cape_frontend_settings.BACKENDS_API_URL[0])}"""
+        {format_url(public_url_frontend,backend_urls[0] if backend_urls else cape_frontend_settings.BACKENDS_API_URL[0],api_version)}"""
     if backend_urls:
         WELCOME_MESSAGE += f"""
         Using publicly available backends at (powered by ngrok): {' '.join(backend_urls)}"""
