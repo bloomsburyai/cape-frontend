@@ -118,7 +118,7 @@ class NgrokActivator:
 
 async def display_welcome():
     global WELCOME_MESSAGE
-    format_url = lambda base,backend: f'{base}/?configuration={{%22api%22:{{%22backendURL%22:%22{backend}%22,%22timeout%22:%221000%22}}#/'
+    format_url = lambda base,backend: f'{base}/?configuration={{%22api%22:{{%22backendURL%22:%22{backend}%22,%22timeout%22:%2215000%22}}#/'
     WELCOME_MESSAGE += f"""
     Frontend locally available at:
         http://localhost:{cape_frontend_settings.CONFIG_SERVER['port']}"""
