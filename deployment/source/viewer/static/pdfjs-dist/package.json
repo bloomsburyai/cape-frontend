@@ -1,0 +1,105 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "pdfjs-dist",
+        "scope": null,
+        "escapedName": "pdfjs-dist",
+        "name": "pdfjs-dist",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/vagrant/source/viewer"
+    ]
+  ],
+  "_from": "pdfjs-dist@latest",
+  "_id": "pdfjs-dist@2.0.303",
+  "_inCache": true,
+  "_location": "/pdfjs-dist",
+  "_nodeVersion": "6.9.4",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/pdfjs-dist-2.0.303.tgz_1517162559496_0.09073652978986502"
+  },
+  "_npmUser": {
+    "name": "pdfjsbot",
+    "email": "dev-pdf-js@lists.mozilla.org"
+  },
+  "_npmVersion": "4.1.2",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "pdfjs-dist",
+    "scope": null,
+    "escapedName": "pdfjs-dist",
+    "name": "pdfjs-dist",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/pdfjs-dist/-/pdfjs-dist-2.0.303.tgz",
+  "_shasum": "8c00530f242286603bfcbfdd2ee917c182b9d441",
+  "_shrinkwrap": null,
+  "_spec": "pdfjs-dist",
+  "_where": "/vagrant/source/viewer",
+  "browser": {
+    "fs": false,
+    "http": false,
+    "https": false,
+    "node-ensure": false
+  },
+  "bugs": {
+    "url": "https://github.com/mozilla/pdf.js/issues"
+  },
+  "dependencies": {
+    "node-ensure": "^0.0.0",
+    "worker-loader": "^1.1.0"
+  },
+  "description": "Generic build of Mozilla's PDF.js library.",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "8c00530f242286603bfcbfdd2ee917c182b9d441",
+    "tarball": "https://registry.npmjs.org/pdfjs-dist/-/pdfjs-dist-2.0.303.tgz"
+  },
+  "format": "amd",
+  "gitHead": "d90724150fdff57ba76c25e2f3167d12105ba2a1",
+  "homepage": "http://mozilla.github.io/pdf.js/",
+  "keywords": [
+    "Mozilla",
+    "pdf",
+    "pdf.js"
+  ],
+  "license": "Apache-2.0",
+  "main": "build/pdf.js",
+  "maintainers": [
+    {
+      "name": "brendandahl",
+      "email": "brendan.dahl@gmail.com"
+    },
+    {
+      "name": "pdfjsbot",
+      "email": "dev-pdf-js@lists.mozilla.org"
+    },
+    {
+      "name": "yurydelendik",
+      "email": "ydelendik@mozilla.com"
+    }
+  ],
+  "name": "pdfjs-dist",
+  "optionalDependencies": {},
+  "peerDependencies": {
+    "webpack": "^2.0.0 || ^3.0.0"
+  },
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mozilla/pdfjs-dist.git"
+  },
+  "scripts": {},
+  "version": "2.0.303"
+}

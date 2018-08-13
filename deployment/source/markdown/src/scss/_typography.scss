@@ -1,0 +1,272 @@
+/**
+ *
+ *  Typography
+ *
+ */
+
+$base-font-size: 1rem !default;
+$base-line-height: 1.5rem !default;
+
+$font-weight-light: 300 !default;
+$font-weight-regular: 400 !default;
+$font-weight-medium: 500 !default;
+
+// Display 4
+// --
+// Not to be used for multi line text
+// --
+// + size: 112px = 7rem
+// + tracking: -10
+
+$display-4-font-size: $base-font-size * 7 !default;
+$display-4-line-height: $base-line-height !default;
+$display-4-letter-spacing: -10rem / 16 / 2 !default; //-0.3rem !default;//-0.625rem !default;
+
+@mixin typography-display-4() {
+  font-size: $display-4-font-size;
+  font-weight: $font-weight-light;
+  line-height: $display-4-line-height;
+  letter-spacing: $display-4-letter-spacing;
+  margin: 0;
+}
+
+.cape-typography-display-4 {
+  @include typography-display-4();
+}
+
+// Display 3
+// --
+// Not to be used for multi line text
+// --
+// + size: 56px = 3.5rem
+// + tracking: -5
+
+$display-3-font-size: $base-font-size * 3.5 !default;
+$display-3-line-height: $base-line-height !default;
+$display-3-letter-spacing: -5rem / 16 / 2 !default;
+
+@mixin typography-display-3() {
+  font-size: $display-3-font-size;
+  font-weight: $font-weight-regular;
+  line-height: $display-3-line-height;
+  letter-spacing: $display-3-letter-spacing / 2;
+  margin: 0;
+}
+
+.cape-typography-display-3 {
+  @include typography-display-3();
+}
+
+// Display 2
+// --
+// + size: 45px = 2.8125rem
+// + leading: 48px = 3rem
+// + tracking: 0
+$display-2-font-size: $base-font-size * 2.8125 !default;
+$display-2-line-height: $base-font-size * 3 !default;
+$display-2-letter-spacing: 0 !default;
+
+@mixin typography-display-2() {
+  font-size: $display-2-font-size;
+  font-weight: $font-weight-regular;
+  line-height: $display-2-line-height;
+  letter-spacing: $display-2-letter-spacing;
+  margin: 0;
+}
+
+.cape-typography-display-2 {
+  @include typography-display-2();
+}
+
+// Display 1
+// --
+// + size: 34px = 2.125rem
+// + leading: 40px = 2.5rem
+// + tracking: 0
+$display-1-font-size: $base-font-size * 2.125 !default;
+$display-1-line-height: $base-font-size * 2.5 !default;
+$display-1-letter-spacing: 0 !default;
+
+@mixin typography-display-1() {
+  font-size: $display-1-font-size;
+  font-weight: $font-weight-regular;
+  line-height: $display-1-line-height;
+  letter-spacing: $display-1-letter-spacing;
+  margin: 0;
+}
+
+.cape-typography-display-1 {
+  @include typography-display-1();
+}
+
+// Headline
+// --
+// + size: 24px = 1.5rem
+// + leading: 32px = 2rem
+// + tracking: 0
+$headline-font-size: $base-font-size * 1.5 !default;
+$headline-line-height: $base-font-size * 2 !default;
+$headline-letter-spacing: 0 !default;
+
+@mixin typography-headline() {
+  font-size: $headline-font-size;
+  font-weight: $font-weight-regular;
+  line-height: $headline-line-height;
+  letter-spacing: $headline-letter-spacing;
+  margin: 0;
+}
+
+.cape-typography-headline {
+  @include typography-headline();
+}
+
+// Title
+// --
+// Not to be used for multi line text
+// --
+// + size: 20px = 1.25rem
+// + tracking: 5
+$title-font-size: $base-font-size * 1.25 !default;
+$title-line-height: $base-line-height !default;
+$title-letter-spacing: 0 !default;//5rem / 16 / 2 !default;
+
+@mixin typography-title() {
+  font-size: $title-font-size;
+  font-weight: $font-weight-medium;
+  line-height: $title-line-height;
+  letter-spacing: $title-letter-spacing;
+  margin: 0;
+}
+
+.cape-typography-title {
+  @include typography-title();
+}
+
+// Subheading 2
+// --
+// + size: 16px = 1rem
+// + leading: 28px = 1.75rem
+// + tracking: 10
+$subheading-2-font-size: $base-font-size !default;
+$subheading-2-line-height: $base-font-size * 1.75 !default;
+$subheading-2-letter-spacing: 0.01rem !default;//10rem / 16 / 2 !default;
+
+@mixin typography-subheading-2() {
+  font-size: $subheading-2-font-size;
+  font-weight: $font-weight-regular;
+  line-height: $subheading-2-line-height;
+  letter-spacing: $subheading-2-letter-spacing;
+  margin: 0;
+}
+
+.cape-typography-subheading-2 {
+  @include typography-subheading-2();
+}
+
+// Subheading 1
+// --
+// + size: 16px = 1rem
+// + leading: 24px = 1.5rem
+// + tracking: 10
+$subheading-1-font-size: $base-font-size !default;
+$subheading-1-line-height: $base-font-size * 1.5 !default;
+$subheading-1-letter-spacing: 0.01rem !default;
+
+@mixin typography-subheading-1() {
+  font-size: $subheading-1-font-size;
+  font-weight: $font-weight-regular;
+  line-height: $subheading-1-line-height;
+  letter-spacing: $subheading-1-letter-spacing;
+  margin: 0;
+}
+
+.cape-typography-subheading-1 {
+  @include typography-subheading-1();
+}
+
+// Body 2
+// --
+// + size: 14px = 0.875rem
+// + leading: 24px = 1.5rem
+// + tracking: 10
+$body-2-font-size: $base-font-size * 0.875 !default;
+$body-2-line-height: $base-font-size * 1.5 !default;
+$body-2-letter-spacing: 0.01rem !default;
+
+@mixin typography-body-2() {
+  font-size: $body-2-font-size;
+  font-weight: $font-weight-medium;
+  line-height: $body-2-line-height;
+  letter-spacing: $body-2-letter-spacing;
+  margin: 0;
+}
+
+.cape-typography-body-2 {
+  @include typography-body-2();
+}
+
+// Body 1
+// --
+// + size: 14px = 0.875rem
+// + leading: 20px = 1.25rem
+// + tracking: 10
+$body-1-font-size: $base-font-size * 0.875 !default;
+$body-1-line-height: $base-font-size * 1.25 !default;
+$body-1-letter-spacing: 0.01rem !default;
+
+@mixin typography-body-1() {
+  font-size: $body-1-font-size;
+  font-weight: $font-weight-regular;
+  line-height: $body-1-line-height;
+  letter-spacing: $body-1-letter-spacing;
+  margin: 0;
+}
+
+.cape-typography-body-1 {
+  @include typography-body-1();
+}
+
+// Caption
+// --
+// Not to be used for multi line text
+// --
+// + size: 12px = 0.75rem
+// + tracking: 20
+$caption-font-size: $base-font-size * 0.75 !default;
+$caption-line-height: $base-font-size * 1.25 !default;
+$caption-letter-spacing: 0.02rem !default;
+
+@mixin typography-caption() {
+  font-size: $caption-font-size;
+  font-weight: $font-weight-regular;
+  line-height: $caption-line-height;
+  letter-spacing: $caption-letter-spacing;
+  margin: 0;
+}
+
+.cape-typography-caption {
+  @include typography-caption();
+}
+
+// Button
+// --
+// Not to be used for multi line text
+// --
+// + size: 14px = 0.875rem
+// + tracking: 10
+$button-font-size: $base-font-size * 0.875 !default;
+$button-line-height: $base-line-height !default;
+$button-letter-spacing: 0.01rem !default;
+
+@mixin typography-button() {
+  font-size: $button-font-size;
+  font-weight: $font-weight-medium;
+  line-height: $button-line-height;
+  letter-spacing: $button-letter-spacing;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.cape-typography-button {
+  @include typography-button();
+}

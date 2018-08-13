@@ -1,0 +1,83 @@
+/**
+ *
+ * Mode common styles
+ *
+ */
+
+@import "../../scss/cape";
+
+// Mixins
+
+@mixin contain() {
+  width: 80%;
+  max-width: 44rem;
+  margin: 0 auto;
+}
+
+
+// Dashed container & autogrow textarea
+
+.cape-dashboard-dashed-container,
+.cape-dashboard-autogrow-textarea {
+  display: block!important;
+  width: 100%!important;
+}
+
+// Body
+
+.body {
+  @include layout-fit();
+  @include layout-vertical();
+  width: 100%;
+  height: 100%;
+  background-color: $blue-grey-50;
+}
+
+// Canvas
+
+.canvas-wrapper {
+  @include layout-flex();
+  @include layout-scroll-vertical();
+}
+
+.canvas {
+  width: 100%;
+  height: 100%;
+}
+
+// Page & content
+
+.page-wrapper {
+  @include contain();
+}
+
+.page {
+  @include layout-vertical();
+  background-color: $white;
+  box-shadow: $box-shadow-1;
+  border: 1px solid $grey-300;
+  padding: 6rem;
+}
+
+// Page spacing
+
+.page .created-wrapper {
+  margin: 0 0 1.875rem 0;
+}
+
+// Page typography
+
+.page .title {
+  @include typography-headline();
+  color: $blue-grey-600;
+}
+
+.page .created {
+  @include typography-body-1();
+  color: $blue-grey-200;
+}
+
+.page .content {
+  @include typography-subheading-1();
+  color: $blue-grey-400;
+}

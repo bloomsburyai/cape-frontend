@@ -1,0 +1,22 @@
+/**
+ *
+ * Utilities
+ *
+ */
+
+@mixin utility-selection-prevent() {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@mixin utility-cursor-pointer() {
+  cursor: pointer; cursor: hand;
+}
+
+@mixin utility-text-truncate-single-line() {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

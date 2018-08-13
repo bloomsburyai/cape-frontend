@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# Update, install git
+apt-get update
+apt-get install -y git
+
+# NVM
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.5/install.sh | NVM_DIR=/home/vagrant/.nvm PROFILE=/home/vagrant/.bashrc bash
+
+# Fix ownership of .nvm
+chown vagrant:vagrant /home/vagrant/.nvm
+
+# Make nvm available in current shell
+export NVM_DIR="/home/vagrant/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+# ChromeDriver dependencies
+sudo apt-get install -y libnss3 libgconf-2-4 xvfb
+
+# Chrome
+wget -N https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -P /home/vagrant
+sudo dpkg -i --force-depends /home/vagrant/google-chrome-stable_current_amd64.deb
+sudo apt-get -f install -y
+sudo dpkg -i --force-depends /home/vagrant/google-chrome-stable_current_amd64.deb
+
+# Oracle JDK
+add-apt-repository ppa:webupd8team/java
+apt-get update
+echo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections
+echo debconf shared/accepted-oracle-license-v1-1 seen true | sudo debconf-set-selections
+apt-get install -y oracle-java9-installer
+
+# Install & use node in .nvmrc
+cd /vagrant && nvm install && nvm use
+
+# Default directory on shell load
+echo "cd /vagrant" >> /home/vagrant/.bashrc
+
+# VueCLI
+npm install --global vue-cli

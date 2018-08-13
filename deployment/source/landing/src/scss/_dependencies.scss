@@ -1,0 +1,108 @@
+/**
+ *
+ * Fonts
+ *
+ */
+
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab|Roboto:300,400,500');
+
+/**
+ * Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
+ * License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
+ */
+
+@import "../../node_modules/font-awesome-sass/assets/stylesheets/font-awesome/variables";
+$fa-font-path: "../node_modules/font-awesome-sass/assets/fonts/font-awesome/";
+@import "../../node_modules/font-awesome-sass/assets/stylesheets/font-awesome/mixins";
+@import "../../node_modules/font-awesome-sass/assets/stylesheets/font-awesome/path";
+@import "../../node_modules/font-awesome-sass/assets/stylesheets/font-awesome/core";
+@import "../../node_modules/font-awesome-sass/assets/stylesheets/font-awesome/larger";
+@import "../../node_modules/font-awesome-sass/assets/stylesheets/font-awesome/fixed-width";
+@import "../../node_modules/font-awesome-sass/assets/stylesheets/font-awesome/list";
+@import "../../node_modules/font-awesome-sass/assets/stylesheets/font-awesome/bordered-pulled";
+@import "../../node_modules/font-awesome-sass/assets/stylesheets/font-awesome/animated";
+@import "../../node_modules/font-awesome-sass/assets/stylesheets/font-awesome/rotated-flipped";
+@import "../../node_modules/font-awesome-sass/assets/stylesheets/font-awesome/stacked";
+@import "../../node_modules/font-awesome-sass/assets/stylesheets/font-awesome/icons";
+@import "../../node_modules/font-awesome-sass/assets/stylesheets/font-awesome/screen-reader";
+
+/*!
+ * Bootstrap v4.0.0-beta.2 (https://getbootstrap.com)
+ * Copyright 2011-2017 The Bootstrap Authors
+ * Copyright 2011-2017 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+
+/**
+ * Override variables
+ */
+// Grid containers
+//
+// Define the maximum width of `.container` for different screen sizes.
+
+// Grid columns
+//
+// Set the number of columns and specify the width of the gutters.
+
+$grid-gutter-width: 16px;
+
+// Components
+//
+// Define common padding and border radius sizes and more.
+
+$border-radius: 0.125rem;
+$border-radius-lg: 0.125rem;
+$border-radius-sm: 0.125rem;
+
+// Buttons
+//
+// For each of Bootstrap's buttons, define text, background and border color.
+
+$input-btn-focus-box-shadow: none;
+
+$btn-box-shadow: none;
+$btn-active-box-shadow: none;
+
+// Allows for customizing button radius independently from global border radius
+$btn-border-radius: $border-radius;
+$btn-border-radius-lg: $border-radius-lg;
+$btn-border-radius-sm: $border-radius-sm;
+
+@import "../../node_modules/bootstrap/scss/mixins";
+@import "../../node_modules/bootstrap/scss/root";
+@import "../../node_modules/bootstrap/scss/print";
+@import "../../node_modules/bootstrap/scss/reboot";
+@import "../../node_modules/bootstrap/scss/type";
+@import "../../node_modules/bootstrap/scss/images";
+@import "../../node_modules/bootstrap/scss/code";
+@import "../../node_modules/bootstrap/scss/grid";
+@import "../../node_modules/bootstrap/scss/tables";
+@import "../../node_modules/bootstrap/scss/forms";
+@import "../../node_modules/bootstrap/scss/buttons";
+@import "../../node_modules/bootstrap/scss/transitions";
+@import "../../node_modules/bootstrap/scss/dropdown";
+@import "../../node_modules/bootstrap/scss/button-group";
+@import "../../node_modules/bootstrap/scss/input-group";
+@import "../../node_modules/bootstrap/scss/custom-forms";
+@import "../../node_modules/bootstrap/scss/nav";
+@import "../../node_modules/bootstrap/scss/navbar";
+@import "../../node_modules/bootstrap/scss/card";
+@import "../../node_modules/bootstrap/scss/breadcrumb";
+@import "../../node_modules/bootstrap/scss/pagination";
+@import "../../node_modules/bootstrap/scss/badge";
+@import "../../node_modules/bootstrap/scss/jumbotron";
+@import "../../node_modules/bootstrap/scss/alert";
+@import "../../node_modules/bootstrap/scss/progress";
+@import "../../node_modules/bootstrap/scss/media";
+@import "../../node_modules/bootstrap/scss/list-group";
+@import "../../node_modules/bootstrap/scss/close";
+@import "../../node_modules/bootstrap/scss/modal";
+@import "../../node_modules/bootstrap/scss/tooltip";
+@import "../../node_modules/bootstrap/scss/popover";
+@import "../../node_modules/bootstrap/scss/carousel";
+@import "../../node_modules/bootstrap/scss/utilities";
+
+

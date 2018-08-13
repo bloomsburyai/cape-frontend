@@ -1,0 +1,148 @@
+/**
+ * HTML & Body
+ */
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: #eceff1;
+}
+
+/**
+ * Typography
+ */
+
+h4 {
+  font-weight: 300;
+  line-height: 2rem;
+}
+
+h4.primary {
+  color: #546e7a;
+}
+
+h4.secondary {
+  color: #b0bec5;
+}
+
+/**
+ * Panel
+ */
+
+.panel {
+  background: #ffffff;
+  -webkit-box-shadow: 0px 1px 3px 1px rgba(0,0,0,0.05);
+  -moz-box-shadow: 0px 1px 3px 1px rgba(0,0,0,0.05);
+  box-shadow: 0px 1px 3px 1px rgba(0,0,0,0.05);
+}
+
+.panel .panel-header {
+  padding: 3rem 3rem .75rem 3rem;
+}
+
+.panel .panel-header h4 {
+  margin: 0;
+}
+
+.panel .panel-body {
+  padding: .75rem 3rem 3rem 3rem;
+}
+
+/**
+ * Alert
+ */
+
+.alert {
+  padding: 1rem 3rem;
+  border-radius: 0;
+  border: 0;
+  margin: .75rem 0;
+
+  padding: 1rem 2rem;
+  margin: .75rem 3rem;
+}
+
+.alert-danger {
+  background: #F44336;
+  color: #ffffff;
+}
+
+.alert-success {
+  background: #4CAF50;
+  color: #ffffff;
+}
+
+/**
+ * Form controls
+ */
+
+.form-control {
+  border-radius: .125rem;
+  padding: .5rem .75rem;
+  line-height: 1;
+}
+
+/**
+ * Button
+ */
+
+.btn {
+  font-size: .875rem;
+  line-height: 1;
+  padding: .625rem 1rem;
+  border-radius: .125rem;
+  text-transform: uppercase;
+
+  cursor: pointer; cursor: hand;
+}
+
+.btn-primary {
+  background: #2196f3;
+  border-color: transparent;
+}
+
+/**
+ * Link
+ */
+
+.link {
+  font-size: 1rem;
+}
+
+.link-primary {
+  color: #2196f3;
+}
+
+.link-secondary {
+  color: #b0bec5;
+}
+
+/**
+ * Placeholder
+ */
+
+.placeholder {
+  padding: 3rem 0;
+  font-size: .75rem;
+  color: #CFD8DC;
+  text-align: center;
+}
+
+/**
+ * Footer
+ */
+
+.footer {
+  padding: 2rem 0 0 0;
+  margin: 0 0 1rem 0;
+  text-align: center;
+  color: #78909c;
+}
+
+.footer p {
+  margin: 0;
+}

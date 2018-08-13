@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Base16 Shell
+git clone https://github.com/chriskempson/base16-shell.git /home/vagrant/.config/base16-shell
+echo '
+BASE16_SHELL=$HOME/.config/base16-shell/
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+' >> /home/vagrant/.bashrc
+
+# Vim
+git clone https://github.com/VundleVim/Vundle.vim.git /home/vagrant/.vim/bundle/Vundle.vim
+cp /vagrant/source/development_environment/vagrant/workspace/alexdeefuse/.vimrc /home/vagrant
+sudo vim +PluginInstall +qall
