@@ -25,5 +25,5 @@ RUN /code/buidFrontend.sh
 #Or download the image :
 #docker pull bloomsburyai/npm-cape-frontend
 #To rebuild the frontend run this image by mounting the input and output folders from the host :
-#docker run --rm -ti -v $(pwd)/deployment:/mnt-input/ $(pwd)/cape_frontend/static:/mnt-output/ bloomsburyai/npm-cape-frontend
+#docker run --rm -ti -v $(pwd)/deployment:/mnt-input/ -v $(pwd)/cape_frontend/static:/mnt-output/ bloomsburyai/npm-cape-frontend
 ENTRYPOINT ["/code/buidFrontend.sh"]
