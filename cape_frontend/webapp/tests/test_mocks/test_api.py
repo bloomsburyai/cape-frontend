@@ -186,11 +186,11 @@ def test_mock_full():
     response = session.get(MOCK_FULL_BASE_URL + '/answer?token=blah&question=Is this API easy to use?')
     assert response.status_code == 200
     assert response.json()['success'] == True and len(response.json()['result']['items']) == 1
-    response = session.post(MOCK_FULL_BASE_URL + '/user/google-oauth2callback', {'successCallback': 'https://ui.thecape.ai',
-                                                                                 'errorCallback': 'https://ui.thecape.ai/error'})
+    response = session.post(MOCK_FULL_BASE_URL + '/user/google-oauth2callback', {'successCallback': UI_URL,
+                                                                                 'errorCallback': f'{UI_URL}/error'})
     assert response.status_code == 200
-    response = session.post(MOCK_FULL_BASE_URL + '/user/facebook-oauth2callback', {'successCallback': 'https://ui.thecape.ai',
-                                                                                   'errorCallback': 'https://ui.thecape.ai/error'})
+    response = session.post(MOCK_FULL_BASE_URL + '/user/facebook-oauth2callback', {'successCallback': UI_URL,
+                                                                                   'errorCallback': f'{UI_URL}/error'})
     assert response.status_code == 200
 
 
