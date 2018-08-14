@@ -194,36 +194,6 @@
 
       }
 
-      .panel-scrape {
-
-        .form-control {
-          @include typography-body-1();
-          text-transform: none;
-          text-align: left;
-          border-radius: 0.125rem;
-          height: 2.25rem;
-          line-height: 2.25rem;
-          padding: 0 1rem;
-          border: 0.0625rem solid $grey-300;
-          color: $blue-grey-400;
-
-          &:focus {
-            box-shadow: none;
-            border: 0.0625rem solid $grey-300;
-          }
-        }
-
-        .cape-dashboard-progress-label-button {
-          background: $green-500;
-          color: $white;
-          margin-right: 15px;
-
-          &:hover {
-            background: $green-700;
-          }
-        }
-
-      }
     }
 
   }
@@ -370,29 +340,6 @@
             </div>
           </div>
 
-          <div class="panel panel-scrape">
-            <div class="header">
-              <h6>Scrape web page</h6>
-            </div>
-            <cape-dashboard-alert-manager
-              ref="scrapeAlertManager"/>
-            <div class="body">
-              <p>Automatically generate saved replies from a web page.</p>
-
-              <div class="row">
-                <div class="col">
-                  <input
-                    v-model="urlValue"
-                    type="text"
-                    class="form-control">
-                </div>
-                <cape-dashboard-progress-label-button
-                  label="Scrape"
-                  v-bind:progress="scrapeProgress"
-                  v-on:click.native="_handleScrapeClick"/>
-              </div>
-            </div>
-          </div>
 
         </div>
 
@@ -448,7 +395,6 @@ export default {
       emailStatus: '',
       emailValue: '',
       emailProgress: false,
-      scrapeProgress: false,
       urlValue: ''
     }
   },
@@ -562,29 +508,6 @@ export default {
       })
     },
 
-    /**
-     * Scraping
-     */
-
-    _handleScrapeClick () {
-      this.scrapeProgress = true
-      this.$refs.scrapeAlertManager.close()
-      console.log(this.urlValue)
-      client.reply.scrape(this.urlValue, (error, data) => {
-        this.scrapeProgress = false
-        if (error) {
-          this.$refs.scrapeAlertManager.open({
-            type: AlertMessage.TYPE_ERROR,
-            label: error.message
-          })
-        } else {
-          this.$refs.scrapeAlertManager.open({
-            type: AlertMessage.TYPE_SUCCESS,
-            label: data
-          })
-        }
-      })
-    },
 
     /**
      * Route
@@ -605,9 +528,6 @@ export default {
           break
         case 'forward-email':
           target = '.panel-email'
-          break
-        case 'scrape':
-          target = '.panel-scrape'
           break
       }
       if (!target) {

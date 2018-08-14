@@ -135,22 +135,24 @@ async def display_welcome():
     api_version = '0.1'
     # http://b8f7208d.ngrok.io/?configuration={%22api%22:{%22backendURL%22:%22https://30a33ee8.ngrok.io/api/0.1%22,%22timeout%22:%2215000%22}}#/
 
-    format_url = lambda base,backend,version: f'{base}/?configuration={{"api":{{"backendURL":"{backend}/{version}","timeout":"15000"}}}}#/'
+    format_url = lambda base, backend,version: f'{base}/?configuration={{"api":{{"backendURL":"{backend}/{version}","timeout":"15000"}}}}#/'
     WELCOME_MESSAGE += f"""
     Frontend locally available at:
         http://localhost:{cape_frontend_settings.CONFIG_SERVER['port']}"""
-    public_url_frontend = NgrokActivator.activate_ngrok_linux(cape_frontend_settings.CONFIG_SERVER['port'])
-    backend_urls = [NgrokActivator.activate_ngrok_linux(urlparse(backend_url).port) + '/api'
-                    for idx, backend_url in enumerate(cape_frontend_settings.BACKENDS_API_URL)]
-    if public_url_frontend:
+    if cape_frontend_settings.ACTIVATE_NGROK_LINUX:
+        public_url_frontend = NgrokActivator.activate_ngrok_linux(cape_frontend_settings.CONFIG_SERVER['port'])
+        backend_urls = [NgrokActivator.activate_ngrok_linux(urlparse(backend_url).port) + '/api'
+                        for idx, backend_url in enumerate(cape_frontend_settings.BACKENDS_API_URL)]
+        if public_url_frontend:
+            WELCOME_MESSAGE += f"""
+        Frontend publicly available at (powered by ngrok):
+            {format_url(public_url_frontend,backend_urls[0] if backend_urls else cape_frontend_settings.BACKENDS_API_URL[0],api_version)}"""
+        if backend_urls:
+            WELCOME_MESSAGE += f"""
+            Using publicly available backends at (powered by ngrok): {' '.join(backend_urls)}"""
+    if cape_frontend_settings.WAIT_FOR_BACKENDS:
         WELCOME_MESSAGE += f"""
-    Frontend publicly available at (powered by ngrok):
-        {format_url(public_url_frontend,backend_urls[0] if backend_urls else cape_frontend_settings.BACKENDS_API_URL[0],api_version)}"""
-    if backend_urls:
-        WELCOME_MESSAGE += f"""
-        Using publicly available backends at (powered by ngrok): {' '.join(backend_urls)}"""
-    WELCOME_MESSAGE += f"""
-        Local backends at: {' '.join(cape_frontend_settings.BACKENDS_API_URL)}"""
+            Local backends at: {' '.join(cape_frontend_settings.BACKENDS_API_URL)}"""
     log(WELCOME_MESSAGE)
 
 

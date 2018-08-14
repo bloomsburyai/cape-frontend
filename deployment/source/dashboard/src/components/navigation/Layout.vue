@@ -135,12 +135,7 @@
       <i slot="icon" class="fa fa-at" aria-hidden="true"></i>
       <span slot="label">Forward email</span>
     </cape-dashboard-navigation-anchor>
-    <cape-dashboard-navigation-anchor
-      v-bind:class="{active: (page === 'scrape')}"
-      location="/integrations/scrape">
-      <i slot="icon" class="fa fa-clone" aria-hidden="true"></i>
-      <span slot="label">Scrape</span>
-    </cape-dashboard-navigation-anchor>
+
 
   </div>
 </template>
