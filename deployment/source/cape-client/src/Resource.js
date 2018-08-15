@@ -72,7 +72,7 @@ class Resource {
           return
         }
         // unknown error
-        callback(ClientError.fromObject(ClientError.library.unknown), null)
+        callback(ClientError.fromObject(ClientError.library.failedConnection), null)
       } else if (_.has(error, 'request')) {
         // request made but no response was received
         callback(ClientError.fromObject(ClientError.library.unknown), null)

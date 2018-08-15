@@ -17548,6 +17548,10 @@ ClientError.library = {
     message: 'An unknown error occured. Please try again later.',
     type: 'unknown'
   },
+  failedConnection: {
+    message: 'Unable to connect to backend. To specify a backend URL at runtime append the configuration URL paramater: http://yourfrontend.com/?configuration={"api": {"backendURL": "http://yourbackend.com:5050"} }',
+    type: 'failedConnection'
+  },
   malformedResponse: {
     message: 'Malformed response.',
     type: 'malformedResponse'
@@ -17941,7 +17945,7 @@ var Resource = function () {
             return;
           }
           // unknown error
-          callback(_Error2.default.fromObject(_Error2.default.library.unknown), null);
+          callback(_Error2.default.fromObject(_Error2.default.library.failedConnection), null);
         } else if (_lodash2.default.has(error, 'request')) {
           // request made but no response was received
           callback(_Error2.default.fromObject(_Error2.default.library.unknown), null);

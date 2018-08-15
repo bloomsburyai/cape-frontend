@@ -40,6 +40,10 @@ ClientError.library = {
     message: 'An unknown error occured. Please try again later.',
     type: 'unknown'
   },
+  failedConnection: {
+    message: 'Unable to connect to backend. To specify a backend URL at runtime append the configuration URL paramater: http://yourfrontend.com/?configuration={"api": {"backendURL": "http://yourbackend.com:5050"} }',
+    type: 'failedConnection'
+  },
   malformedResponse: {
     message: 'Malformed response.',
     type: 'malformedResponse'
