@@ -2,7 +2,7 @@ import _ from 'lodash'
 import URI from 'urijs'
 import JSON from 'JSON'
 
-import globalConfiguration from '../../configuration'
+// import globalConfiguration from '../../configuration'
 
 // Parse url
 const uri = new URI()
@@ -25,20 +25,20 @@ export default _.defaults(runtime, {
   api: null, // use "cape-client" default configuration
   authentication: {
     logo: {
-      url: globalConfiguration.frontend.url
+      url: '/?configuration=' + JSON.stringify(runtime)
     },
     login: {
-      redirectURL: globalConfiguration.frontend.url + '/dashboard.html'
+      redirectURL: '/dashboard.html?configuration=' + JSON.stringify(runtime)
     },
     register: {
-      redirectURL: globalConfiguration.frontend.url + '/authentication.html'
+      redirectURL: '/authentication.html?configuration=' + JSON.stringify(runtime)
     },
     oauth: {
       error: {
-        redirectURL: globalConfiguration.frontend.url + '/authentication.html#/login/error'
+        redirectURL: '/authentication.html#/login/error?configuration=' + JSON.stringify(runtime)
       },
       success: {
-        redirectURL: globalConfiguration.frontend.url + '/dashboard.html'
+        redirectURL: '/dashboard.html?configuration=' + JSON.stringify(runtime)
       }
     }
   }

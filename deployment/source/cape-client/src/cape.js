@@ -29,7 +29,7 @@ const resources = {
 // Default API configuration
 const defaultConfiguration = {
   backendURL: globalConfiguration.backend.url,
-  timeout: 60000
+  timeout: 60000,
 }
 
 // Client class

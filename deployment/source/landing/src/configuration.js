@@ -2,7 +2,7 @@ import _ from 'lodash'
 import URI from 'urijs'
 import JSON from 'JSON'
 
-import globalConfiguration from '../../configuration'
+// import globalConfiguration from '../../configuration'
 
 // Parse url
 const uri = new URI()
@@ -31,7 +31,7 @@ if (process && process.env && process.env.NODE_ENV === 'testing') {
 }
 
 // Configuration object
-export default _.defaults(runtime, {
+export default _.defaultsDeep(runtime, {
   api: {
     token: {
       query: 'demo'
@@ -49,9 +49,9 @@ export default _.defaults(runtime, {
     cape_userdb: 'cape-userdb'
   },
   links: {
-    dashboardURL: '/dashboard.html',
-    authenticationURL: '/authentication.html',
-    licensingURL: '#licensing',
+    dashboardURL: '/dashboard.html?configuration=' + JSON.stringify(runtime),
+    authenticationURL: '/authentication.html?configuration=' + JSON.stringify(runtime),
+    licensingURL: '#licensing?configuration=' + JSON.stringify(runtime),
     getstartedURL: 'https://github.com/bloomsburyai/cape-webservices#cape-webservices-',
     slackURL: 'http://goo.gl/3nrh3r',
     documentationURL: '/documentation/index.html',
