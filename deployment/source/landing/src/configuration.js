@@ -51,7 +51,7 @@ export default _.defaultsDeep(runtime, {
   links: {
     dashboardURL: '/dashboard.html?configuration=' + JSON.stringify(runtime),
     authenticationURL: '/authentication.html?configuration=' + JSON.stringify(runtime),
-    licensingURL: '#licensing?configuration=' + JSON.stringify(runtime),
+    licensingURL: '#licensing',
     getstartedURL: 'https://github.com/bloomsburyai/cape-webservices#cape-webservices-',
     slackURL: 'http://goo.gl/3nrh3r',
     documentationURL: '/documentation/index.html',
