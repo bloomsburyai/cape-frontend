@@ -2,7 +2,7 @@ import _ from 'lodash'
 import URI from 'urijs'
 import JSON from 'JSON'
 
-import globalConfiguration from '../../configuration'
+// import globalConfiguration from '../../configuration'
 
 // Parse url
 const uri = new URI()
@@ -32,7 +32,7 @@ if (process && process.env && process.env.NODE_ENV === 'testing') {
 // // Development configuration
 // if (process && process.env && process.env.NODE_ENV === 'development') {}
 
-const authenticationURL = globalConfiguration.frontend.url + '/authentication.html'
+const authenticationURL = '/authentication.html?configuration=' + JSON.stringify(runtime)
 
 // Configuration object
 export default _.defaults(runtime, {
@@ -46,7 +46,7 @@ export default _.defaults(runtime, {
     }
   },
   links: {
-    documentationURL: globalConfiguration.frontend.url + '/documentation/index.html',
+    documentationURL: '/documentation/index.html?configuration=' + JSON.stringify(runtime),
     issueTrackerURL: 'https://github.com/bloomsburyai/cape-issue-tracker/issues',
     pythonClientURL: 'http://cape-client.readthedocs.io/'
   }
