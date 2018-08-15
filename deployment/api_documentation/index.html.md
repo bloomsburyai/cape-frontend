@@ -7,6 +7,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
 
 toc_footers:
   - <a href='https://github.com/bloomsburyai/cape-webservices'>Cape Backend</a>
+  - <a href='https://github.com/bloomsburyai/cape-frontend'>Cape Frontend</a>
   - <a href='https://github.com/tripit/slate'>Documentation generated with Slate</a>
 
 search: true

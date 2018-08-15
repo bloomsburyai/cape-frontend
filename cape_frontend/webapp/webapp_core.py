@@ -135,7 +135,7 @@ async def display_welcome():
     api_version = '0.1'
     # http://b8f7208d.ngrok.io/?configuration={%22api%22:{%22backendURL%22:%22https://30a33ee8.ngrok.io/api/0.1%22,%22timeout%22:%2215000%22}}#/
 
-    format_url = lambda base, backend,version: f'{base}/?configuration={{"api":{{"backendURL":"{backend}/{version}","timeout":"15000"}}}}#/'
+    format_url = lambda base, backend,version: f'{base}/?configuration={{"api":{{"backendURL":"{backend}/{version}","timeout":15000}}}}'
     WELCOME_MESSAGE += f"""
     Frontend locally available at:
         http://localhost:{cape_frontend_settings.CONFIG_SERVER['port']}"""
