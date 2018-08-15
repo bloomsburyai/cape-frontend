@@ -4,7 +4,8 @@
 FROM ubuntu:16.04
 
 RUN apt-get -y update &&\
-    apt-get install -y software-properties-common git curl bzip2 htop wget unzip
+    apt-get install -y software-properties-common git curl bzip2 htop wget\
+        unzip ruby-full build-essential g++ libcurl4-openssl-dev curl locales zlib1g-dev
 
 WORKDIR /code
 ENV NVM_DIR /usr/local/nvm
@@ -17,6 +18,7 @@ RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.33.5/install.sh | b
 
 ADD deployment/buidFrontend.sh /code/buidFrontend.sh
 ADD deployment/source /mnt-input/source
+ADD deployment/api_documentation /mnt-input/api_documentation
 ADD cape_frontend/static /mnt-output
 RUN /code/buidFrontend.sh
 
