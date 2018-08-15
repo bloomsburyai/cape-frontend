@@ -40,6 +40,7 @@ cd ..
 cp -r /mnt-input/api_documentation/. slate-bdb693031027c2e5af77cb709cb86836c3e2e74c/source/
 cd /tmp/slate-bdb693031027c2e5af77cb709cb86836c3e2e74c
 bundle exec middleman build --verbose --clean
+rm -rf /mnt-output/documentation/
 mv build /mnt-output/documentation/
 cd ..
 rm -rf slate-bdb693031027c2e5af77cb709cb86836c3e2e74c
