@@ -4,12 +4,11 @@ Most API endpoints require authentication, there are three primary ways to authe
 
 - Login authentication: Proves that the user has gone through login and can build his own AI.
   * Cape login : A login given by the cape team,
-  * Google login: Use your Google credentials to login,
-  * Facebook login: User your Facebook credentials to login
+  * Google login (can be manually enabled): Use your Google credentials to login,
+  * Facebook login (can be manually enabled): Use your Facebook credentials to login
 - Admin token authentication: Alternative mechanism for proving that the user has been given authorisation to build their own AI.
 - User token authentication: Proves that an AI builder has given the authorisation of usage to a third user.
 
-To sign up for a new account visit our [registration page](https://ui.thecape.ai/authentication.html#/register).
 
 ## Cape login authentication
 
@@ -19,7 +18,7 @@ either by providing the cookie as part of the future requests or by passing the 
 > To obtain a cookie session Id:
 
 ```shell
-curl -v "https://responder.thecape.ai/api/0.1/user/login?login=username&password=password"
+curl -v "http://localhost:5050/api/0.1/user/login?login=username&password=password"
 ```
 
 ```python
@@ -70,7 +69,7 @@ With this cookie all following requests can be authenticated.
 
 `/api/0.1/user/login`
 
-[Mock example](https://ui.thecape.ai/mock/full/api/0.1/user/login?login=username&password=password)
+[Mock example](http://localhost:5051/mock/full/api/0.1/user/login?login=username&password=password)
 
 
 ### Input
@@ -92,6 +91,7 @@ adminToken | 29186dba-b589-11e7-97a4-9801a7ae6c69 | The current admin token whic
 
 ## Google authentication
 
+To enable this authentication, you need to configure the backend accordingly and add a button to the frontend pointing to the necessary callback.
 Google authentication provides a cookie session Id after the user correctly logs in with a Google account.
 The user will be redirected to a supplied URL after authentication.
 
@@ -108,8 +108,8 @@ All parameters for this request must be provided via **POST**.
 
 Field | Example | Description
 --------- | ------- | -----------
-**successCallback** | https://ui.thecape.ai | URL to redirect the user to after correct authentication.
-**errorCallback** | https://ui.thecape.ai/error | URL to redirect the user to after an error in authentication.
+**successCallback** | http://localhost:5051 | URL to redirect the user to after correct authentication.
+**errorCallback** | http://localhost:5051/error | URL to redirect the user to after an error in authentication.
 
 
 ### Result
@@ -119,6 +119,7 @@ A cookie will be created and the user will be redirected to the supplied URL.
 
 ## Facebook authentication
 
+To enable this authentication, you need to configure the backend accordingly and add a button to the frontend pointing to the necessary callback.
 Facebook authentication provides a cookie session Id after the user correctly logs in with a Facebook account.
 The user will be redirected to a supplied URL after authentication.
 
@@ -134,8 +135,8 @@ All parameters for this request must be provided via POST.
 
 Field | Example | Description
 --------- | ------- | -----------
-**successCallback** | https://ui.thecape.ai | URL to redirect the user to after correct authentication.
-**errorCallback** | https://ui.thecape.ai/error | URL to redirect the user to after an error in authentication.
+**successCallback** | http://localhost:5051 | URL to redirect the user to after correct authentication.
+**errorCallback** | http://localhost:5051/error | URL to redirect the user to after an error in authentication.
 
 
 ### Result
@@ -154,7 +155,7 @@ In addition to being provided as part of the *login* endpoint, the admin token c
 > To obtain the current admin token
 
 ```shell
-curl 'https://responder.thecape.ai/api/0.1/user/get-admin-token' \
+curl 'http://localhost:5050/api/0.1/user/get-admin-token' \
     -b 'session=<your session id>'
 ```
 
@@ -180,7 +181,7 @@ print(cc.get_admin_token())
 > This token can then be used to make further requests without doing a cookie based login
 
 ```shell
-curl 'https://responder.thecape.ai/api/0.1/user/get-profile?adminToken=29186dba-b589-11e7-97a4-9801a7ae6c69'
+curl 'http://localhost:5050/api/0.1/user/get-profile?adminToken=29186dba-b589-11e7-97a4-9801a7ae6c69'
 ```
 
 ```python
@@ -195,7 +196,7 @@ The admin token must be passed as a GET parameter.
 ### Definition
 
 `/api/0.1/user/get-admin-token`
-[Mock example](https://ui.thecape.ai/mock/full/api/0.1/user/get-admin-token)
+[Mock example](http://localhost:5051/mock/full/api/0.1/user/get-admin-token)
 
 ### Input
 
@@ -220,7 +221,7 @@ cookie based authentication.
 > To obtain the user token. The user token is used for authenticating the 'answer' method.
 
 ```shell
-curl 'https://responder.thecape.ai/api/0.1/user/get-user-token' \
+curl 'http://localhost:5050/api/0.1/user/get-user-token' \
     -b 'session=<your session id>'
 ```
 
@@ -253,7 +254,7 @@ The user token must be passed as a **GET** parameter.
 
 ### Definition
 
-`/api/0.1/user/get-user-token` [Mock example](https://ui.thecape.ai/mock/full/api/0.1/user/get-user-token)
+`/api/0.1/user/get-user-token` [Mock example](http://localhost:5051/mock/full/api/0.1/user/get-user-token)
 
 ### Input
 
@@ -272,7 +273,7 @@ userToken | j89hvfv89s| A token that gives the holder access to only the /answer
 > To logout
 
 ```shell
-curl -v "https://responder.thecape.ai/api/0.1/user/logout" \
+curl -v "http://localhost:5050/api/0.1/user/logout" \
     -b 'session=<your session id>'
 ```
 
@@ -327,7 +328,7 @@ This operation will log the user out.
 
 ### Definition
 
-`/api/0.1/user/logout` [Mock example](https://ui.thecape.ai/mock/full/api/0.1/user/logout)
+`/api/0.1/user/logout` [Mock example](http://localhost:5051/mock/full/api/0.1/user/logout)
 
 
 ### Input

@@ -1,6 +1,6 @@
 # Introduction
 
-[Cape](https://alpha.thecape.ai) from [Bloomsbury AI](http://bloomsbury.ai) provides an API that makes it easy to build software that answers questions about the contents of documents.
+[Cape](http://github.com/bloomsburyai/cape-webservices) from the now defunct [Bloomsbury AI](http://bloomsbury.ai) is an open source project that provides an API that makes it easy to build software that answers questions about the contents of documents.
 For example, you can use Cape to:
 
 * Build a super-powered ctrl+f that finds the answer to questions like 'Who is the CTO?', rather than just all the occurrences of a keyword;
@@ -12,8 +12,14 @@ You can communicate with Cape either directly over HTTP or using our Python clie
 
 ``pip3 install cape-client``
 
-# API Server
+# Backend service - API Server
 
-Version 0.1 of the API is accessible at:
+This documentation is for version 0.1 of the API.
+You need to launch the webservice backend that will provide the API, more info [here](https://github.com/bloomsburyai/cape-webservices#standalone-webapp-with-docker).
+In this documentation we will refer to the location of the backend server as : `http://localhost:5050/`
 
-``https://responder.thecape.ai/api/0.1/``
+#Frontend service - Management dashboard UI 
+
+You can run the frontend service that hosts this documentation and a management and dashboard UI.
+The frontend server also provides a handy mock API to tests your integrations.
+In this documentation we will refer to the location of the frontend server as : `http://localhost:5051/`

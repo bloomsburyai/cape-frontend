@@ -16,7 +16,7 @@ setting *numberOfItems* to 5, and *offset* to 95.
 > To fetch just the first item from the inbox
 
 ```shell
-curl 'https://responder.thecape.ai/api/0.1/inbox/get-inbox?numberOfItems=1' \
+curl 'http://localhost:5050/api/0.1/inbox/get-inbox?numberOfItems=1' \
     -b 'session=<your session id>'
 ```
 
@@ -71,7 +71,7 @@ print(inbox)
 > We can try to fetch the next 5 items
 
 ```shell
-curl 'https://responder.thecape.ai/api/0.1/inbox/get-inbox?numberOfItems=5&offset=1' \
+curl 'http://localhost:5050/api/0.1/inbox/get-inbox?numberOfItems=5&offset=1' \
     -b 'session=<your session id>'
 ```
 

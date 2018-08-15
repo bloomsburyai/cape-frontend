@@ -13,7 +13,7 @@
 > To retrieve a list of documents
 
 ```shell
-curl 'https://responder.thecape.ai/api/0.1/documents/get-documents' \
+curl 'http://localhost:5050/api/0.1/documents/get-documents' \
     -b 'session=<your session id>'
 ```
 
@@ -85,7 +85,7 @@ print(documents)
 
 ### Definition
 
-`/api/0.1/documents/get-documents` [Mock example](https://ui.thecape.ai/mock/full/api/0.1/documents/get-documents)
+`/api/0.1/documents/get-documents` [Mock example](http://localhost:5051/mock/full/api/0.1/documents/get-documents)
 
 ### Input
 
@@ -125,7 +125,7 @@ modified | 1508161723 | Timestamp of when this document was last modified.
 > To upload a new documents
 
 ```shell
-curl 'https://responder.thecape.ai/api/0.1/documents/add-document?title=Example%20document&text=This%20is%20an%20example.&origin=example.txt' \
+curl 'http://localhost:5050/api/0.1/documents/add-document?title=Example%20document&text=This%20is%20an%20example.&origin=example.txt' \
     -b 'session=<your session id>'
 ```
 
@@ -157,7 +157,7 @@ print(document_id)
 
 ### Definition
 
-`/api/0.1/documents/add-document` [Mock example](https://ui.thecape.ai/mock/full/api/0.1/documents/add-document?title=Example%20document&text=This%20is%20an%20example.&origin=example.txt)
+`/api/0.1/documents/add-document` [Mock example](http://localhost:5051/mock/full/api/0.1/documents/add-document?title=Example%20document&text=This%20is%20an%20example.&origin=example.txt)
 
 ### Input
 
@@ -193,7 +193,7 @@ documentId|my_document.txt|The Id of the new document.
 > To delete an existing document
 
 ```shell
-curl 'https://responder.thecape.ai/api/0.1/documents/delete-document?documentId=358e1b77c9bcc353946dfe107d6b32ff' \
+curl 'http://localhost:5050/api/0.1/documents/delete-document?documentId=358e1b77c9bcc353946dfe107d6b32ff' \
     -b 'session=<your session id>'
 ```
 
@@ -223,7 +223,7 @@ print(document_id)
 
 ### Definition
 
-`/api/0.1/documents/delete-document` [Mock example](https://ui.thecape.ai/mock/full/api/0.1/documents/delete-document?documentId=358e1b77c9bcc353946dfe107d6b32ff)
+`/api/0.1/documents/delete-document` [Mock example](http://localhost:5051/mock/full/api/0.1/documents/delete-document?documentId=358e1b77c9bcc353946dfe107d6b32ff)
 
 ### Input
 

@@ -15,7 +15,7 @@ The answer endpoint answers by reading saved replies and documents.
 > To ask the question "what is the colour of the sky ?"
 
 ```shell
-curl 'https://responder.thecape.ai/api/0.1/answer?token=08aerv08ajkdp&question=what+is+the+colour+of+the+sky+?'
+curl 'http://localhost:5050/api/0.1/answer?token=08aerv08ajkdp&question=what+is+the+colour+of+the+sky+?'
 ```
 
 ```python
@@ -68,7 +68,7 @@ print(answers)
 
 ### Definition
 
-`/api/0.1/answer` [Mock example](https://ui.thecape.ai/mock/full/api/0.1/answer?token=08aerv08ajkdp&question=Is%20this%20API%20easy%20to%20use?)
+`/api/0.1/answer` [Mock example](http://localhost:5051/mock/full/api/0.1/answer?token=08aerv08ajkdp&question=Is%20this%20API%20easy%20to%20use?)
 
 ### Input
 
@@ -76,7 +76,7 @@ Input parameters in bold are required, all other parameters are optional.
 
 Field | Example | Description
 --------- | ------- | -----------
-**token** | 08aerv08ajkdp | The token retrieved from [/get-user-token](#token-authentication)
+**token** | 08aerv08ajkdp | The token retrieved from [/get-user-token](#user-token-authentication)
 **question** | What colour is the sky? | The question to ask.
 text | "The sky is blue" | Optional inline text to be treated as a temporary document with id 'Inline Text'
 threshold | low | The minimum confidence of answers to return. Can be one of 'veryhigh', 'high', 'medium', 'low', 'verylow'.

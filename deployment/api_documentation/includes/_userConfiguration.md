@@ -15,7 +15,7 @@
 > To get the current default threshold
 
 ```shell
-curl 'https://responder.thecape.ai/api/0.1/user/get-default-threshold' \
+curl 'http://localhost:5050/api/0.1/user/get-default-threshold' \
     -b 'session=<your session id>'
 ```
 
@@ -45,7 +45,7 @@ print(default_threshold)
 
 ### Definition
 
-`/api/0.1/user/get-default-threshold` [Mock example](https://ui.thecape.ai/mock/full/api/0.1/user/get-default-threshold)
+`/api/0.1/user/get-default-threshold` [Mock example](http://localhost:5051/mock/full/api/0.1/user/get-default-threshold)
 
 ### Input
 
@@ -73,7 +73,7 @@ If a threshold parameter isn't specified when calling the [*answer*](#answers) e
 > To set a new default threshold
 
 ```shell
-curl 'https://responder.thecape.ai/api/0.1/user/set-default-threshold?threshold=high' \
+curl 'http://localhost:5050/api/0.1/user/set-default-threshold?threshold=high' \
     -b 'session=<your session id>'
 ```
 
@@ -103,7 +103,7 @@ print(default_threshold)
 
 ### Definition
 
-`/api/0.1/user/set-default-threshold` [Mock example](https://ui.thecape.ai/mock/full/api/0.1/user/set-default-threshold?threshold=high)
+`/api/0.1/user/set-default-threshold` [Mock example](http://localhost:5051/mock/full/api/0.1/user/set-default-threshold?threshold=high)
 
 ### Input
 
@@ -140,7 +140,7 @@ When an answer isn't found an email is sent to the forward email address with th
 > To set a new forward email address
 
 ```shell
-curl 'https://responder.thecape.ai/api/0.1/user/set-forward-email?email=test@bloomsbury.ai' \
+curl 'http://localhost:5050/api/0.1/user/set-forward-email?email=test@bloomsbury.ai' \
     -b 'session=<your session id>'
 ```
 
@@ -170,7 +170,7 @@ print(forward_email)
 
 ### Definition
 
-`/api/0.1/user/set-forward-email` [Mock example](https://ui.thecape.ai/mock/full/api/0.1/user/set-forward-email?email=test@bloomsbury.ai)
+`/api/0.1/user/set-forward-email` [Mock example](http://localhost:5051/mock/full/api/0.1/user/set-forward-email?email=test@bloomsbury.ai)
 
 ### Input
 
@@ -200,7 +200,7 @@ email | test@bloomsbury.ai | The new forward email address that has just been se
 > To get the current user's profile
 
 ```shell
-curl 'https://responder.thecape.ai/api/0.1/user/get-profile' \
+curl 'http://localhost:5050/api/0.1/user/get-profile' \
     -b 'session=<your session id>'
 ```
 
@@ -241,7 +241,7 @@ print(cc.get_profile())
 
 ### Definition
 
-`/api/0.1/user/get-profile` [Mock example](https://ui.thecape.ai/mock/full/api/0.1/user/get-profile)
+`/api/0.1/user/get-profile` [Mock example](http://localhost:5051/mock/full/api/0.1/user/get-profile)
 
 ### Input
 

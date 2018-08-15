@@ -24,7 +24,7 @@ All annotation methods require authentication.
 > To retrieve a list of annotations
 
 ```shell
-curl 'https://responder.thecape.ai/api/0.1/annotations/get-annotations' \
+curl 'http://localhost:5050/api/0.1/annotations/get-annotations' \
     -b 'session=<your session id>'
 ```
 
@@ -114,7 +114,7 @@ print(annotations)
 
 ### Definition
 
-`/api/0.1/annotations/get-annotations` [Mock example](https://ui.thecape.ai/mock/full/api/0.1/annotations/get-annotations)
+`/api/0.1/annotations/get-annotations` [Mock example](http://localhost:5051/mock/full/api/0.1/annotations/get-annotations)
 
 ### Input
 
@@ -156,7 +156,7 @@ created|1508161734|Timestamp indicating when this annotation was created.
 > To create a new annotation
 
 ```shell
-curl 'https://responder.thecape.ai/api/0.1/annotations/add-annotation?question=When%20is%20it%20most%20likely%20to%20snow%3F&answer=In%20the%20winter' \
+curl 'http://localhost:5050/api/0.1/annotations/add-annotation?question=When%20is%20it%20most%20likely%20to%20snow%3F&answer=In%20the%20winter' \
     -b 'session=<your session id>'
 ```
 
@@ -190,7 +190,7 @@ print(response)
 
 ### Definition
 
-`/api/0.1/annotations/add-annotation` [Mock example](https://ui.thecape.ai/mock/full/api/0.1/annotations/add-annotation?question=When%20is%20it%20most%20likely%20to%20snow%3F&answer=In%20the%20winter)
+`/api/0.1/annotations/add-annotation` [Mock example](http://localhost:5051/mock/full/api/0.1/annotations/add-annotation?question=When%20is%20it%20most%20likely%20to%20snow%3F&answer=In%20the%20winter)
 
 Questions (whether Canonical or Paraphrase) must be unique for each document.
 
@@ -231,7 +231,7 @@ Deletes an annotation, and its associated canonical and paraphrase questions.
 > To delete an existing annotation
 
 ```shell
-curl 'https://responder.thecape.ai/api/0.1/annotations/delete-annotation?annotationId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69' \
+curl 'http://localhost:5050/api/0.1/annotations/delete-annotation?annotationId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69' \
     -b 'session=<your session id>'
 ```
 
@@ -261,7 +261,7 @@ print(annotation_id)
 
 ### Definition
 
-`/api/0.1/annotations/delete-annotation` [Mock example](https://ui.thecape.ai/mock/full/api/0.1/annotations/delete-annotation?annotationId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69)
+`/api/0.1/annotations/delete-annotation` [Mock example](http://localhost:5051/mock/full/api/0.1/annotations/delete-annotation?annotationId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69)
 
 ### Input
 
@@ -291,7 +291,7 @@ annotationId|f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69|The Id of the annotation that 
 > To add a paraphrase question to an existing annotation
 
 ```shell
-curl 'https://responder.thecape.ai/api/0.1/annotations/add-paraphrase-question?annotationId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69&question=What%20is%20your%20age?' \
+curl 'http://localhost:5050/api/0.1/annotations/add-paraphrase-question?annotationId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69&question=What%20is%20your%20age?' \
     -b 'session=<your session id>'
 ```
 
@@ -321,7 +321,7 @@ print(question_id)
 
 ### Definition
 
-`/api/0.1/annotations/add-paraphrase-question` [Mock example](https://ui.thecape.ai/mock/full/api/0.1/annotations/add-paraphrase-question?annotationId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69&question=What%20is%20your%20age?)
+`/api/0.1/annotations/add-paraphrase-question` [Mock example](http://localhost:5051/mock/full/api/0.1/annotations/add-paraphrase-question?annotationId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69&question=What%20is%20your%20age?)
 
 ### Input
 
@@ -352,7 +352,7 @@ questionId|21e9689e-c3b2-11e7-8a22-9801a7ae6c69|The Id of the paraphrased questi
 > To delete a paraphrase question
 
 ```shell
-curl 'https://responder.thecape.ai/api/0.1/annotations/delete-paraphrase-question?questionId=21e9689e-c3b2-11e7-8a22-9801a7ae6c69' \
+curl 'http://localhost:5050/api/0.1/annotations/delete-paraphrase-question?questionId=21e9689e-c3b2-11e7-8a22-9801a7ae6c69' \
     -b 'session=<your session id>'
 ```
 
@@ -382,7 +382,7 @@ print(question_id)
 
 ### Definition
 
-`/api/0.1/annotations/delete-paraphrase-question` [Mock example](https://ui.thecape.ai/mock/full/api/0.1/annotations/delete-paraphrase-question?questionId=21e9689e-c3b2-11e7-8a22-9801a7ae6c69)
+`/api/0.1/annotations/delete-paraphrase-question` [Mock example](http://localhost:5051/mock/full/api/0.1/annotations/delete-paraphrase-question?questionId=21e9689e-c3b2-11e7-8a22-9801a7ae6c69)
 
 ### Input
 
@@ -412,7 +412,7 @@ questionId|21e9689e-c3b2-11e7-8a22-9801a7ae6c69|The Id of the paraphrase questio
 > To edit an existing paraphrase question
 
 ```shell
-curl 'https://responder.thecape.ai/api/0.1/annotations/edit-paraphrase-question?questionId=21e9689e-c3b2-11e7-8a22-9801a7ae6c69&question=How%20old%20are%you?' \
+curl 'http://localhost:5050/api/0.1/annotations/edit-paraphrase-question?questionId=21e9689e-c3b2-11e7-8a22-9801a7ae6c69&question=How%20old%20are%you?' \
     -b 'session=<your session id>'
 ```
 
@@ -442,7 +442,7 @@ print(question_id)
 
 ### Definition
 
-`/api/0.1/annotations/edit-paraphrase-question` [Mock example](https://ui.thecape.ai/mock/full/api/0.1/annotations/edit-paraphrase-question?questionId=21e9689e-c3b2-11e7-8a22-9801a7ae6c69&question=How%20old%20are%20you?)
+`/api/0.1/annotations/edit-paraphrase-question` [Mock example](http://localhost:5051/mock/full/api/0.1/annotations/edit-paraphrase-question?questionId=21e9689e-c3b2-11e7-8a22-9801a7ae6c69&question=How%20old%20are%20you?)
 
 ### Input
 
@@ -473,7 +473,7 @@ questionId|21e9689e-c3b2-11e7-8a22-9801a7ae6c69|The Id of the paraphrase questio
 > To modify an annotation's canonical question
 
 ```shell
-curl 'https://responder.thecape.ai/api/0.1/annotations/edit-canonical-question?annotationId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69&question=What%20age%20are%20you?' \
+curl 'http://localhost:5050/api/0.1/annotations/edit-canonical-question?annotationId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69&question=What%20age%20are%20you?' \
     -b 'session=<your session id>'
 ```
 
@@ -503,7 +503,7 @@ print(annotation_id)
 
 ### Definition
 
-`/api/0.1/annotations/edit-canonical-question` [Mock example](https://ui.thecape.ai/mock/full/api/0.1/annotations/edit-canonical-question?annotationId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69&question=What%age%20are%20you?)
+`/api/0.1/annotations/edit-canonical-question` [Mock example](http://localhost:5051/mock/full/api/0.1/annotations/edit-canonical-question?annotationId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69&question=What%age%20are%20you?)
 
 ### Input
 
@@ -534,7 +534,7 @@ annotationId|f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69|The Id of the annotation that 
 > To add an additional answer to an existing annotation
 
 ```shell
-curl 'https://responder.thecape.ai/api/0.1/annotations/add-answer?annotationId=68c445cc-c3b2-11e7-8a88-9801a7ae6c69&answer=Grey' \
+curl 'http://localhost:5050/api/0.1/annotations/add-answer?annotationId=68c445cc-c3b2-11e7-8a88-9801a7ae6c69&answer=Grey' \
     -b 'session=<your session id>'
 ```
 
@@ -564,7 +564,7 @@ print(answer_id)
 
 ### Definition
 
-`/api/0.1/annotations/add-answer` [Mock example](https://ui.thecape.ai/mock/full/api/0.1/annotations/add-answer?annotationId=68c445cc-c3b2-11e7-8a88-9801a7ae6c69&answer=Grey)
+`/api/0.1/annotations/add-answer` [Mock example](http://localhost:5051/mock/full/api/0.1/annotations/add-answer?annotationId=68c445cc-c3b2-11e7-8a88-9801a7ae6c69&answer=Grey)
 
 ### Input
 
@@ -595,7 +595,7 @@ answerId|703acab4-c3b2-11e7-b8b1-9801a7ae6c69|The Id of the answer that was adde
 > To delete an answer from an annotation
 
 ```shell
-curl 'https://responder.thecape.ai/api/0.1/annotations/delete-answer?answerId=703acab4-c3b2-11e7-b8b1-9801a7ae6c69' \
+curl 'http://localhost:5050/api/0.1/annotations/delete-answer?answerId=703acab4-c3b2-11e7-b8b1-9801a7ae6c69' \
     -b 'session=<your session id>'
 ```
 
@@ -632,7 +632,7 @@ Attempting to delete the last remaining answer in an annotation will result in a
 
 ### Definition
 
-`/api/0.1/annotations/delete-answer` [Mock example](https://ui.thecape.ai/mock/full/api/0.1/annotations/delete-answer?answerId=703acab4-c3b2-11e7-b8b1-9801a7ae6c69)
+`/api/0.1/annotations/delete-answer` [Mock example](http://localhost:5051/mock/full/api/0.1/annotations/delete-answer?answerId=703acab4-c3b2-11e7-b8b1-9801a7ae6c69)
 
 ### Input
 
@@ -662,7 +662,7 @@ answerId|703acab4-c3b2-11e7-b8b1-9801a7ae6c69|The Id of the answer that was dele
 > To edit an answer of an existing annotation
 
 ```shell
-curl 'https://responder.thecape.ai/api/0.1/annotations/edit-answer?answerId=703acab4-c3b2-11e7-b8b1-9801a7ae6c69&answer=Blue' \
+curl 'http://localhost:5050/api/0.1/annotations/edit-answer?answerId=703acab4-c3b2-11e7-b8b1-9801a7ae6c69&answer=Blue' \
     -b 'session=<your session id>'
 ```
 
@@ -692,7 +692,7 @@ print(answer_id)
 
 ### Definition
 
-`/api/0.1/annotations/edit-answer` [Mock example](https://ui.thecape.ai/mock/full/api/0.1/annotations/edit-answer?answerId=703acab4-c3b2-11e7-b8b1-9801a7ae6c69&answer=Blue)
+`/api/0.1/annotations/edit-answer` [Mock example](http://localhost:5051/mock/full/api/0.1/annotations/edit-answer?answerId=703acab4-c3b2-11e7-b8b1-9801a7ae6c69&answer=Blue)
 
 ### Input
 

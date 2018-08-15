@@ -223,7 +223,10 @@
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
           </li>
           <li>
-            <a href="#api-server" class="toc-h1 toc-link" data-title="API Server">API Server</a>
+            <a href="#backend-service-api-server" class="toc-h1 toc-link" data-title="Backend service - API Server">Backend service - API Server</a>
+          </li>
+          <li>
+            <a href="#frontend-service-management-dashboard-ui" class="toc-h1 toc-link" data-title="Frontend service - Management dashboard UI">Frontend service - Management dashboard UI</a>
           </li>
           <li>
             <a href="#answer" class="toc-h1 toc-link" data-title="Answer">Answer</a>
@@ -372,6 +375,17 @@
               </ul>
           </li>
           <li>
+            <a href="#user-creation-and-deletion" class="toc-h1 toc-link" data-title="User - Creation and Deletion">User - Creation and Deletion</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#cape-super-admin-creating-a-new-account" class="toc-h2 toc-link" data-title="User - Creation and Deletion">Cape SUPER ADMIN - Creating a new account</a>
+                  </li>
+                  <li>
+                    <a href="#cape-super-admin-deleting-an-existing-account" class="toc-h2 toc-link" data-title="User - Creation and Deletion">Cape SUPER ADMIN - Deleting an existing account</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#handling-results-with-lists" class="toc-h1 toc-link" data-title="Handling results with lists">Handling results with lists</a>
           </li>
           <li>
@@ -393,26 +407,15 @@
           </li>
       </div>
         <ul class="toc-footer">
-            <li><a href='https://alpha.thecape.ai'>Sign-up to Cape</a></li>
+            <li><a href='https://github.com/bloomsburyai/cape-webservices'>Cape Backend</a></li>
             <li><a href='https://github.com/tripit/slate'>Documentation generated with Slate</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-105833677-4"></script>
-
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-105833677-4');
-</script>
-<h1 id='introduction'>Introduction</h1>
-<p><a href="https://alpha.thecape.ai">Cape</a> from <a href="http://bloomsbury.ai">Bloomsbury AI</a> provides an API that makes it easy to build software that answers questions about the contents of documents.
+        <h1 id='introduction'>Introduction</h1>
+<p><a href="http://github.com/bloomsburyai/cape-webservices">Cape</a> from the now defunct <a href="http://bloomsbury.ai">Bloomsbury AI</a> is an open source project that provides an API that makes it easy to build software that answers questions about the contents of documents.
 For example, you can use Cape to:</p>
 
 <ul>
@@ -425,10 +428,14 @@ For example, you can use Cape to:</p>
 <p>You can communicate with Cape either directly over HTTP or using our Python client library. To install the Python client simply run:</p>
 
 <p><code>pip3 install cape-client</code></p>
-<h1 id='api-server'>API Server</h1>
-<p>Version 0.1 of the API is accessible at:</p>
-
-<p><code>https://responder.thecape.ai/api/0.1/</code></p>
+<h1 id='backend-service-api-server'>Backend service - API Server</h1>
+<p>This documentation is for version 0.1 of the API.
+You need to launch the webservice backend that will provide the API, more info <a href="https://github.com/bloomsburyai/cape-webservices#standalone-webapp-with-docker">here</a>.
+In this documentation we will refer to the location of the backend server as : <code>http://localhost:5050/</code></p>
+<h1 id='frontend-service-management-dashboard-ui'>Frontend service - Management dashboard UI</h1>
+<p>You can run the frontend service that hosts this documentation and a management and dashboard UI.
+The frontend server also provides a handy mock API to tests your integrations.
+In this documentation we will refer to the location of the frontend server as : <code>http://localhost:5051/</code></p>
 <h1 id='answer'>Answer</h1>
 <p>The answer endpoint answers by reading saved replies and documents.</p>
 <h2 id='answering-questions'>Answering questions</h2>
@@ -444,7 +451,7 @@ For example, you can use Cape to:</p>
 <blockquote>
 <p>To ask the question &quot;what is the colour of the sky ?&quot;</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://responder.thecape.ai/api/0.1/answer?token=08aerv08ajkdp&amp;question=what+is+the+colour+of+the+sky+?'</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'http://localhost:5050/api/0.1/answer?token=08aerv08ajkdp&amp;question=what+is+the+colour+of+the+sky+?'</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">cape.client</span> <span class="kn">import</span> <span class="n">CapeClient</span>
 
 <span class="n">cc</span> <span class="o">=</span> <span class="n">CapeClient</span><span class="p">()</span>
@@ -487,7 +494,7 @@ For example, you can use Cape to:</p>
       <span class="p">}</span>
 <span class="p">]</span>
 </code></pre><h3 id='definition'>Definition</h3>
-<p><code>/api/0.1/answer</code> <a href="https://ui.thecape.ai/mock/full/api/0.1/answer?token=08aerv08ajkdp&amp;question=Is%20this%20API%20easy%20to%20use?">Mock example</a></p>
+<p><code>/api/0.1/answer</code> <a href="http://localhost:5051/mock/full/api/0.1/answer?token=08aerv08ajkdp&amp;question=Is%20this%20API%20easy%20to%20use?">Mock example</a></p>
 <h3 id='input'>Input</h3>
 <p>Input parameters in bold are required, all other parameters are optional.</p>
 
@@ -617,14 +624,12 @@ Unlike other lists <i>answer</i> doesn't provide a <i>totalItems</i> count.
 
 <ul>
 <li>Cape login : A login given by the cape team,</li>
-<li>Google login: Use your Google credentials to login,</li>
-<li>Facebook login: User your Facebook credentials to login</li>
+<li>Google login (can be manually enabled): Use your Google credentials to login,</li>
+<li>Facebook login (can be manually enabled): Use your Facebook credentials to login</li>
 </ul></li>
 <li>Admin token authentication: Alternative mechanism for proving that the user has been given authorisation to build their own AI.</li>
 <li>User token authentication: Proves that an AI builder has given the authorisation of usage to a third user.</li>
 </ul>
-
-<p>To sign up for a new account visit our <a href="https://ui.thecape.ai/authentication.html#/register">registration page</a>.</p>
 <h2 id='cape-login-authentication'>Cape login authentication</h2>
 <p>Login authentication provides both a cookie session Id and the current admin token. Either can be used to authenticate future commands,
 either by providing the cookie as part of the future requests or by passing the admin token via the <em>adminToken</em> parameter.</p>
@@ -632,7 +637,7 @@ either by providing the cookie as part of the future requests or by passing the 
 <blockquote>
 <p>To obtain a cookie session Id:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -v <span class="s2">"https://responder.thecape.ai/api/0.1/user/login?login=username&amp;password=password"</span>
+<pre class="highlight shell tab-shell"><code>curl -v <span class="s2">"http://localhost:5050/api/0.1/user/login?login=username&amp;password=password"</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">cape.client</span> <span class="kn">import</span> <span class="n">CapeClient</span>
 
 <span class="n">cc</span> <span class="o">=</span> <span class="n">CapeClient</span><span class="p">()</span>
@@ -675,7 +680,7 @@ With this cookie all following requests can be authenticated.</p>
 <h3 id='definition'>Definition</h3>
 <p><code>/api/0.1/user/login</code></p>
 
-<p><a href="https://ui.thecape.ai/mock/full/api/0.1/user/login?login=username&amp;password=password">Mock example</a></p>
+<p><a href="http://localhost:5051/mock/full/api/0.1/user/login?login=username&amp;password=password">Mock example</a></p>
 <h3 id='input'>Input</h3>
 <p>Input parameters in bold are required, all other parameters are optional.</p>
 
@@ -722,7 +727,8 @@ With this cookie all following requests can be authenticated.</p>
 </tr>
 </tbody></table>
 <h2 id='google-authentication'>Google authentication</h2>
-<p>Google authentication provides a cookie session Id after the user correctly logs in with a Google account.
+<p>To enable this authentication, you need to configure the backend accordingly and add a button to the frontend pointing to the necessary callback.
+Google authentication provides a cookie session Id after the user correctly logs in with a Google account.
 The user will be redirected to a supplied URL after authentication.</p>
 <h3 id='definition-2'>Definition</h3>
 <p><code>/api/0.1/user/google-oauth2callback</code></p>
@@ -740,19 +746,20 @@ The user will be redirected to a supplied URL after authentication.</p>
 </thead><tbody>
 <tr>
 <td><strong>successCallback</strong></td>
-<td>https://ui.thecape.ai</td>
+<td>http://localhost:5051</td>
 <td>URL to redirect the user to after correct authentication.</td>
 </tr>
 <tr>
 <td><strong>errorCallback</strong></td>
-<td>https://ui.thecape.ai/error</td>
+<td>http://localhost:5051/error</td>
 <td>URL to redirect the user to after an error in authentication.</td>
 </tr>
 </tbody></table>
 <h3 id='result-2'>Result</h3>
 <p>A cookie will be created and the user will be redirected to the supplied URL.</p>
 <h2 id='facebook-authentication'>Facebook authentication</h2>
-<p>Facebook authentication provides a cookie session Id after the user correctly logs in with a Facebook account.
+<p>To enable this authentication, you need to configure the backend accordingly and add a button to the frontend pointing to the necessary callback.
+Facebook authentication provides a cookie session Id after the user correctly logs in with a Facebook account.
 The user will be redirected to a supplied URL after authentication.</p>
 <h3 id='definition-3'>Definition</h3>
 <p><code>/api/0.1/user/facebook-oauth2callback</code></p>
@@ -770,12 +777,12 @@ The user will be redirected to a supplied URL after authentication.</p>
 </thead><tbody>
 <tr>
 <td><strong>successCallback</strong></td>
-<td>https://ui.thecape.ai</td>
+<td>http://localhost:5051</td>
 <td>URL to redirect the user to after correct authentication.</td>
 </tr>
 <tr>
 <td><strong>errorCallback</strong></td>
-<td>https://ui.thecape.ai/error</td>
+<td>http://localhost:5051/error</td>
 <td>URL to redirect the user to after an error in authentication.</td>
 </tr>
 </tbody></table>
@@ -791,7 +798,7 @@ The user will be redirected to a supplied URL after authentication.</p>
 <blockquote>
 <p>To obtain the current admin token</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://responder.thecape.ai/api/0.1/user/get-admin-token'</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'http://localhost:5050/api/0.1/user/get-admin-token'</span> <span class="se">\</span>
     -b <span class="s1">'session=&lt;your session id&gt;'</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">cape.client</span> <span class="kn">import</span> <span class="n">CapeClient</span>
 
@@ -812,7 +819,7 @@ The user will be redirected to a supplied URL after authentication.</p>
 <blockquote>
 <p>This token can then be used to make further requests without doing a cookie based login</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://responder.thecape.ai/api/0.1/user/get-profile?adminToken=29186dba-b589-11e7-97a4-9801a7ae6c69'</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'http://localhost:5050/api/0.1/user/get-profile?adminToken=29186dba-b589-11e7-97a4-9801a7ae6c69'</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">cape.client</span> <span class="kn">import</span> <span class="n">CapeClient</span>
 
 <span class="n">cc</span> <span class="o">=</span> <span class="n">CapeClient</span><span class="p">(</span><span class="n">admin_token</span><span class="o">=</span><span class="s">"29186dba-b589-11e7-97a4-9801a7ae6c69"</span><span class="p">)</span>
@@ -821,7 +828,7 @@ The user will be redirected to a supplied URL after authentication.</p>
 <p>The admin token must be passed as a GET parameter.</p>
 <h3 id='definition-4'>Definition</h3>
 <p><code>/api/0.1/user/get-admin-token</code>
-<a href="https://ui.thecape.ai/mock/full/api/0.1/user/get-admin-token">Mock example</a></p>
+<a href="http://localhost:5051/mock/full/api/0.1/user/get-admin-token">Mock example</a></p>
 <h3 id='input-4'>Input</h3>
 <p>None</p>
 <h3 id='result-4'>Result</h3>
@@ -849,7 +856,7 @@ cookie based authentication.</p>
 <blockquote>
 <p>To obtain the user token. The user token is used for authenticating the &#39;answer&#39; method.</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://responder.thecape.ai/api/0.1/user/get-user-token'</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'http://localhost:5050/api/0.1/user/get-user-token'</span> <span class="se">\</span>
     -b <span class="s1">'session=&lt;your session id&gt;'</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">cape.client</span> <span class="kn">import</span> <span class="n">CapeClient</span>
 
@@ -873,7 +880,7 @@ cookie based authentication.</p>
 
 <p>The user token must be passed as a <strong>GET</strong> parameter.</p>
 <h3 id='definition-5'>Definition</h3>
-<p><code>/api/0.1/user/get-user-token</code> <a href="https://ui.thecape.ai/mock/full/api/0.1/user/get-user-token">Mock example</a></p>
+<p><code>/api/0.1/user/get-user-token</code> <a href="http://localhost:5051/mock/full/api/0.1/user/get-user-token">Mock example</a></p>
 <h3 id='input-5'>Input</h3>
 <p>None</p>
 <h3 id='result-5'>Result</h3>
@@ -894,7 +901,7 @@ cookie based authentication.</p>
 <blockquote>
 <p>To logout</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -v <span class="s2">"https://responder.thecape.ai/api/0.1/user/logout"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl -v <span class="s2">"http://localhost:5050/api/0.1/user/logout"</span> <span class="se">\</span>
     -b <span class="s1">'session=&lt;your session id&gt;'</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">cape.client</span> <span class="kn">import</span> <span class="n">CapeClient</span>
 <span class="n">cc</span> <span class="o">=</span> <span class="n">CapeClient</span><span class="p">()</span>
@@ -938,7 +945,7 @@ Content-Type: application/json
 </code></pre>
 <p>This operation will log the user out.</p>
 <h3 id='definition-6'>Definition</h3>
-<p><code>/api/0.1/user/logout</code> <a href="https://ui.thecape.ai/mock/full/api/0.1/user/logout">Mock example</a></p>
+<p><code>/api/0.1/user/logout</code> <a href="http://localhost:5051/mock/full/api/0.1/user/logout">Mock example</a></p>
 <h3 id='input-6'>Input</h3>
 <p>None</p>
 <h3 id='result-6'>Result</h3>
@@ -967,7 +974,7 @@ Content-Type: application/json
 <blockquote>
 <p>To retrieve a list of documents</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://responder.thecape.ai/api/0.1/documents/get-documents'</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'http://localhost:5050/api/0.1/documents/get-documents'</span> <span class="se">\</span>
     -b <span class="s1">'session=&lt;your session id&gt;'</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">cape.client</span> <span class="kn">import</span> <span class="n">CapeClient</span>
 
@@ -1029,7 +1036,7 @@ Content-Type: application/json
     <span class="p">]</span>
 <span class="p">}</span>
 </code></pre><h3 id='definition'>Definition</h3>
-<p><code>/api/0.1/documents/get-documents</code> <a href="https://ui.thecape.ai/mock/full/api/0.1/documents/get-documents">Mock example</a></p>
+<p><code>/api/0.1/documents/get-documents</code> <a href="http://localhost:5051/mock/full/api/0.1/documents/get-documents">Mock example</a></p>
 <h3 id='input'>Input</h3>
 <p>Input parameters in bold are required, all other parameters are optional.</p>
 
@@ -1114,7 +1121,7 @@ Content-Type: application/json
 <blockquote>
 <p>To upload a new documents</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://responder.thecape.ai/api/0.1/documents/add-document?title=Example%20document&amp;text=This%20is%20an%20example.&amp;origin=example.txt'</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'http://localhost:5050/api/0.1/documents/add-document?title=Example%20document&amp;text=This%20is%20an%20example.&amp;origin=example.txt'</span> <span class="se">\</span>
     -b <span class="s1">'session=&lt;your session id&gt;'</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">cape.client</span> <span class="kn">import</span> <span class="n">CapeClient</span>
 
@@ -1136,7 +1143,7 @@ Content-Type: application/json
 <span class="o">}</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="s">'4e2fc0c58f973ddd4ace0de85a5ebba9b88cc35df80d8c455c6079726075d3bf'</span>
 </code></pre><h3 id='definition-2'>Definition</h3>
-<p><code>/api/0.1/documents/add-document</code> <a href="https://ui.thecape.ai/mock/full/api/0.1/documents/add-document?title=Example%20document&amp;text=This%20is%20an%20example.&amp;origin=example.txt">Mock example</a></p>
+<p><code>/api/0.1/documents/add-document</code> <a href="http://localhost:5051/mock/full/api/0.1/documents/add-document?title=Example%20document&amp;text=This%20is%20an%20example.&amp;origin=example.txt">Mock example</a></p>
 <h3 id='input-2'>Input</h3>
 <p>Input parameters in bold are required, all other parameters are optional. In the case of <strong>text</strong> and <strong>file</strong>, one or the other is required, not both.</p>
 
@@ -1209,7 +1216,7 @@ Content-Type: application/json
 <blockquote>
 <p>To delete an existing document</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://responder.thecape.ai/api/0.1/documents/delete-document?documentId=358e1b77c9bcc353946dfe107d6b32ff'</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'http://localhost:5050/api/0.1/documents/delete-document?documentId=358e1b77c9bcc353946dfe107d6b32ff'</span> <span class="se">\</span>
     -b <span class="s1">'session=&lt;your session id&gt;'</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">cape.client</span> <span class="kn">import</span> <span class="n">CapeClient</span>
 
@@ -1229,7 +1236,7 @@ Content-Type: application/json
 <span class="o">}</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="s">'358e1b77c9bcc353946dfe107d6b32ff'</span>
 </code></pre><h3 id='definition-3'>Definition</h3>
-<p><code>/api/0.1/documents/delete-document</code> <a href="https://ui.thecape.ai/mock/full/api/0.1/documents/delete-document?documentId=358e1b77c9bcc353946dfe107d6b32ff">Mock example</a></p>
+<p><code>/api/0.1/documents/delete-document</code> <a href="http://localhost:5051/mock/full/api/0.1/documents/delete-document?documentId=358e1b77c9bcc353946dfe107d6b32ff">Mock example</a></p>
 <h3 id='input-3'>Input</h3>
 <p>Input parameters in bold are required, all other parameters are optional.</p>
 
@@ -1282,7 +1289,7 @@ obvious ways of phrasing the same thing.</p>
 <blockquote>
 <p>To retrieve a list of saved replies</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://responder.thecape.ai/api/0.1/saved-replies/get-saved-replies'</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'http://localhost:5050/api/0.1/saved-replies/get-saved-replies'</span> <span class="se">\</span>
     -b <span class="s1">'session=&lt;your session id&gt;'</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">cape.client</span> <span class="kn">import</span> <span class="n">CapeClient</span>
 
@@ -1377,7 +1384,7 @@ obvious ways of phrasing the same thing.</p>
     <span class="p">]</span>
 <span class="p">}</span>
 </code></pre><h3 id='definition'>Definition</h3>
-<p><code>/api/0.1/saved-replies/get-saved-replies</code> <a href="https://ui.thecape.ai/mock/full/api/0.1/saved-replies/get-saved-replies">Mock example</a></p>
+<p><code>/api/0.1/saved-replies/get-saved-replies</code> <a href="http://localhost:5051/mock/full/api/0.1/saved-replies/get-saved-replies">Mock example</a></p>
 <h3 id='input'>Input</h3>
 <p>Input parameters in bold are required, all other parameters are optional.</p>
 
@@ -1462,7 +1469,7 @@ obvious ways of phrasing the same thing.</p>
 <blockquote>
 <p>To create a new saved reply</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://responder.thecape.ai/api/0.1/saved-replies/add-saved-reply?question=When%20is%20it%20most%20likely%20to%20snow%3F&amp;answer=In%20the%20winter'</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'http://localhost:5050/api/0.1/saved-replies/add-saved-reply?question=When%20is%20it%20most%20likely%20to%20snow%3F&amp;answer=In%20the%20winter'</span> <span class="se">\</span>
     -b <span class="s1">'session=&lt;your session id&gt;'</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">cape.client</span> <span class="kn">import</span> <span class="n">CapeClient</span>
 
@@ -1486,7 +1493,7 @@ obvious ways of phrasing the same thing.</p>
     <span class="s">"answerId"</span><span class="p">:</span> <span class="s">"a67678b6-c3b1-11e7-abaa-9801a7ae6c69"</span>
 <span class="p">}</span>
 </code></pre><h3 id='definition-2'>Definition</h3>
-<p><code>/api/0.1/saved-replies/add-saved-reply</code> <a href="https://ui.thecape.ai/mock/full/api/0.1/saved-replies/add-saved-reply?question=When%20is%20it%20most%20likely%20to%20snow%3F&amp;answer=In%20the%20winter">Mock example</a></p>
+<p><code>/api/0.1/saved-replies/add-saved-reply</code> <a href="http://localhost:5051/mock/full/api/0.1/saved-replies/add-saved-reply?question=When%20is%20it%20most%20likely%20to%20snow%3F&amp;answer=In%20the%20winter">Mock example</a></p>
 
 <p>Questions (whether Canonical or Paraphrase) must be unique.</p>
 <h3 id='input-2'>Input</h3>
@@ -1543,7 +1550,7 @@ obvious ways of phrasing the same thing.</p>
 <blockquote>
 <p>To delete an existing saved reply</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://responder.thecape.ai/api/0.1/saved-replies/delete-saved-reply?replyId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69'</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'http://localhost:5050/api/0.1/saved-replies/delete-saved-reply?replyId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69'</span> <span class="se">\</span>
     -b <span class="s1">'session=&lt;your session id&gt;'</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">cape.client</span> <span class="kn">import</span> <span class="n">CapeClient</span>
 
@@ -1563,7 +1570,7 @@ obvious ways of phrasing the same thing.</p>
 <span class="o">}</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="s">"f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69"</span>
 </code></pre><h3 id='definition-3'>Definition</h3>
-<p><code>/api/0.1/saved-replies/delete-saved-reply</code> <a href="https://ui.thecape.ai/mock/full/api/0.1/saved-replies/delete-saved-reply?replyId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69">Mock example</a></p>
+<p><code>/api/0.1/saved-replies/delete-saved-reply</code> <a href="http://localhost:5051/mock/full/api/0.1/saved-replies/delete-saved-reply?replyId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69">Mock example</a></p>
 <h3 id='input-3'>Input</h3>
 <p>Input parameters in bold are required, all other parameters are optional.</p>
 
@@ -1606,7 +1613,7 @@ obvious ways of phrasing the same thing.</p>
 <blockquote>
 <p>To add a paraphrase question to an existing saved reply</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://responder.thecape.ai/api/0.1/saved-replies/add-paraphrase-question?replyId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69&amp;question=What%20is%20your%20age?'</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'http://localhost:5050/api/0.1/saved-replies/add-paraphrase-question?replyId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69&amp;question=What%20is%20your%20age?'</span> <span class="se">\</span>
     -b <span class="s1">'session=&lt;your session id&gt;'</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">cape.client</span> <span class="kn">import</span> <span class="n">CapeClient</span>
 
@@ -1626,7 +1633,7 @@ obvious ways of phrasing the same thing.</p>
 <span class="o">}</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="s">"21e9689e-c3b2-11e7-8a22-9801a7ae6c69"</span>
 </code></pre><h3 id='definition-4'>Definition</h3>
-<p><code>/api/0.1/saved-replies/add-paraphrase-question</code> <a href="https://ui.thecape.ai/mock/full/api/0.1/saved-replies/add-paraphrase-question?replyId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69&amp;question=What%20is%20your%20age?">Mock example</a></p>
+<p><code>/api/0.1/saved-replies/add-paraphrase-question</code> <a href="http://localhost:5051/mock/full/api/0.1/saved-replies/add-paraphrase-question?replyId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69&amp;question=What%20is%20your%20age?">Mock example</a></p>
 <h3 id='input-4'>Input</h3>
 <p>Input parameters in bold are required, all other parameters are optional.</p>
 
@@ -1674,7 +1681,7 @@ obvious ways of phrasing the same thing.</p>
 <blockquote>
 <p>To delete a paraphrase question</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://responder.thecape.ai/api/0.1/saved-replies/delete-paraphrase-question?questionId=21e9689e-c3b2-11e7-8a22-9801a7ae6c69'</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'http://localhost:5050/api/0.1/saved-replies/delete-paraphrase-question?questionId=21e9689e-c3b2-11e7-8a22-9801a7ae6c69'</span> <span class="se">\</span>
     -b <span class="s1">'session=&lt;your session id&gt;'</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">cape.client</span> <span class="kn">import</span> <span class="n">CapeClient</span>
 
@@ -1694,7 +1701,7 @@ obvious ways of phrasing the same thing.</p>
 <span class="o">}</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="s">"21e9689e-c3b2-11e7-8a22-9801a7ae6c69"</span>
 </code></pre><h3 id='definition-5'>Definition</h3>
-<p><code>/api/0.1/saved-replies/delete-paraphrase-question</code> <a href="https://ui.thecape.ai/mock/full/api/0.1/saved-replies/delete-paraphrase-question?questionId=21e9689e-c3b2-11e7-8a22-9801a7ae6c69">Mock example</a></p>
+<p><code>/api/0.1/saved-replies/delete-paraphrase-question</code> <a href="http://localhost:5051/mock/full/api/0.1/saved-replies/delete-paraphrase-question?questionId=21e9689e-c3b2-11e7-8a22-9801a7ae6c69">Mock example</a></p>
 <h3 id='input-5'>Input</h3>
 <p>Input parameters in bold are required, all other parameters are optional.</p>
 
@@ -1737,7 +1744,7 @@ obvious ways of phrasing the same thing.</p>
 <blockquote>
 <p>To edit an existing paraphrase question</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://responder.thecape.ai/api/0.1/saved-replies/edit-paraphrase-question?questionId=21e9689e-c3b2-11e7-8a22-9801a7ae6c69&amp;question=How%20old%20are%you?'</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'http://localhost:5050/api/0.1/saved-replies/edit-paraphrase-question?questionId=21e9689e-c3b2-11e7-8a22-9801a7ae6c69&amp;question=How%20old%20are%you?'</span> <span class="se">\</span>
     -b <span class="s1">'session=&lt;your session id&gt;'</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">cape.client</span> <span class="kn">import</span> <span class="n">CapeClient</span>
 
@@ -1757,7 +1764,7 @@ obvious ways of phrasing the same thing.</p>
 <span class="o">}</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="s">"21e9689e-c3b2-11e7-8a22-9801a7ae6c69"</span>
 </code></pre><h3 id='definition-6'>Definition</h3>
-<p><code>/api/0.1/saved-replies/edit-paraphrase-question</code> <a href="https://ui.thecape.ai/mock/full/api/0.1/saved-replies/edit-paraphrase-question?questionId=21e9689e-c3b2-11e7-8a22-9801a7ae6c69&amp;question=How%20old%20are%20you?">Mock example</a></p>
+<p><code>/api/0.1/saved-replies/edit-paraphrase-question</code> <a href="http://localhost:5051/mock/full/api/0.1/saved-replies/edit-paraphrase-question?questionId=21e9689e-c3b2-11e7-8a22-9801a7ae6c69&amp;question=How%20old%20are%20you?">Mock example</a></p>
 <h3 id='input-6'>Input</h3>
 <p>Input parameters in bold are required, all other parameters are optional.</p>
 
@@ -1805,7 +1812,7 @@ obvious ways of phrasing the same thing.</p>
 <blockquote>
 <p>To modify a saved reply&#39;s canonical question</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://responder.thecape.ai/api/0.1/saved-replies/edit-canonical-question?replyId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69&amp;question=What%20age%20are%20you?'</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'http://localhost:5050/api/0.1/saved-replies/edit-canonical-question?replyId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69&amp;question=What%20age%20are%20you?'</span> <span class="se">\</span>
     -b <span class="s1">'session=&lt;your session id&gt;'</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">cape.client</span> <span class="kn">import</span> <span class="n">CapeClient</span>
 
@@ -1825,7 +1832,7 @@ obvious ways of phrasing the same thing.</p>
 <span class="o">}</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="s">"f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69"</span>
 </code></pre><h3 id='definition-7'>Definition</h3>
-<p><code>/api/0.1/saved-replies/edit-canonical-question</code> <a href="https://ui.thecape.ai/mock/full/api/0.1/saved-replies/edit-canonical-question?replyId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69&amp;question=What%age%20are%20you?">Mock example</a></p>
+<p><code>/api/0.1/saved-replies/edit-canonical-question</code> <a href="http://localhost:5051/mock/full/api/0.1/saved-replies/edit-canonical-question?replyId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69&amp;question=What%age%20are%20you?">Mock example</a></p>
 <h3 id='input-7'>Input</h3>
 <p>Input parameters in bold are required, all other parameters are optional.</p>
 
@@ -1873,7 +1880,7 @@ obvious ways of phrasing the same thing.</p>
 <blockquote>
 <p>To add an additional answer to an existing saved reply</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://responder.thecape.ai/api/0.1/saved-replies/add-answer?replyId=68c445cc-c3b2-11e7-8a88-9801a7ae6c69&amp;answer=Grey'</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'http://localhost:5050/api/0.1/saved-replies/add-answer?replyId=68c445cc-c3b2-11e7-8a88-9801a7ae6c69&amp;answer=Grey'</span> <span class="se">\</span>
     -b <span class="s1">'session=&lt;your session id&gt;'</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">cape.client</span> <span class="kn">import</span> <span class="n">CapeClient</span>
 
@@ -1893,7 +1900,7 @@ obvious ways of phrasing the same thing.</p>
 <span class="o">}</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="s">"703acab4-c3b2-11e7-b8b1-9801a7ae6c69"</span>
 </code></pre><h3 id='definition-8'>Definition</h3>
-<p><code>/api/0.1/saved-replies/add-answer</code> <a href="https://ui.thecape.ai/mock/full/api/0.1/saved-replies/add-answer?replyId=68c445cc-c3b2-11e7-8a88-9801a7ae6c69&amp;answer=Grey">Mock example</a></p>
+<p><code>/api/0.1/saved-replies/add-answer</code> <a href="http://localhost:5051/mock/full/api/0.1/saved-replies/add-answer?replyId=68c445cc-c3b2-11e7-8a88-9801a7ae6c69&amp;answer=Grey">Mock example</a></p>
 <h3 id='input-8'>Input</h3>
 <p>Input parameters in bold are required, all other parameters are optional.</p>
 
@@ -1941,7 +1948,7 @@ obvious ways of phrasing the same thing.</p>
 <blockquote>
 <p>To delete an answer from a saved reply</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://responder.thecape.ai/api/0.1/saved-replies/delete-answer?answerId=703acab4-c3b2-11e7-b8b1-9801a7ae6c69'</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'http://localhost:5050/api/0.1/saved-replies/delete-answer?answerId=703acab4-c3b2-11e7-b8b1-9801a7ae6c69'</span> <span class="se">\</span>
     -b <span class="s1">'session=&lt;your session id&gt;'</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">cape.client</span> <span class="kn">import</span> <span class="n">CapeClient</span>
 
@@ -1968,7 +1975,7 @@ at random from the valid answers.</p>
 
 <p>Attempting to delete the last remaining answer in a saved reply will result in an error.</p>
 <h3 id='definition-9'>Definition</h3>
-<p><code>/api/0.1/saved-replies/delete-answer</code> <a href="https://ui.thecape.ai/mock/full/api/0.1/saved-replies/delete-answer?answerId=703acab4-c3b2-11e7-b8b1-9801a7ae6c69">Mock example</a></p>
+<p><code>/api/0.1/saved-replies/delete-answer</code> <a href="http://localhost:5051/mock/full/api/0.1/saved-replies/delete-answer?answerId=703acab4-c3b2-11e7-b8b1-9801a7ae6c69">Mock example</a></p>
 <h3 id='input-9'>Input</h3>
 <p>Input parameters in bold are required, all other parameters are optional.</p>
 
@@ -2011,7 +2018,7 @@ at random from the valid answers.</p>
 <blockquote>
 <p>To edit an answer of an existing saved reply</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://responder.thecape.ai/api/0.1/saved-replies/edit-answer?answerId=703acab4-c3b2-11e7-b8b1-9801a7ae6c69&amp;answer=Blue'</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'http://localhost:5050/api/0.1/saved-replies/edit-answer?answerId=703acab4-c3b2-11e7-b8b1-9801a7ae6c69&amp;answer=Blue'</span> <span class="se">\</span>
     -b <span class="s1">'session=&lt;your session id&gt;'</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">cape.client</span> <span class="kn">import</span> <span class="n">CapeClient</span>
 
@@ -2031,7 +2038,7 @@ at random from the valid answers.</p>
 <span class="o">}</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="s">"703acab4-c3b2-11e7-b8b1-9801a7ae6c69"</span>
 </code></pre><h3 id='definition-10'>Definition</h3>
-<p><code>/api/0.1/saved-replies/edit-answer</code> <a href="https://ui.thecape.ai/mock/full/api/0.1/saved-replies/edit-answer?answerId=703acab4-c3b2-11e7-b8b1-9801a7ae6c69&amp;answer=Blue">Mock example</a></p>
+<p><code>/api/0.1/saved-replies/edit-answer</code> <a href="http://localhost:5051/mock/full/api/0.1/saved-replies/edit-answer?answerId=703acab4-c3b2-11e7-b8b1-9801a7ae6c69&amp;answer=Blue">Mock example</a></p>
 <h3 id='input-10'>Input</h3>
 <p>Input parameters in bold are required, all other parameters are optional.</p>
 
@@ -2090,7 +2097,7 @@ Paraphrases might be less obvious ways of phrasing the same thing.</p>
 <blockquote>
 <p>To retrieve a list of annotations</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://responder.thecape.ai/api/0.1/annotations/get-annotations'</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'http://localhost:5050/api/0.1/annotations/get-annotations'</span> <span class="se">\</span>
     -b <span class="s1">'session=&lt;your session id&gt;'</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">cape.client</span> <span class="kn">import</span> <span class="n">CapeClient</span>
 
@@ -2170,7 +2177,7 @@ Paraphrases might be less obvious ways of phrasing the same thing.</p>
     <span class="p">]</span>
 <span class="p">}</span>
 </code></pre><h3 id='definition'>Definition</h3>
-<p><code>/api/0.1/annotations/get-annotations</code> <a href="https://ui.thecape.ai/mock/full/api/0.1/annotations/get-annotations">Mock example</a></p>
+<p><code>/api/0.1/annotations/get-annotations</code> <a href="http://localhost:5051/mock/full/api/0.1/annotations/get-annotations">Mock example</a></p>
 <h3 id='input'>Input</h3>
 <p>Input parameters in bold are required, all other parameters are optional.</p>
 
@@ -2270,7 +2277,7 @@ Paraphrases might be less obvious ways of phrasing the same thing.</p>
 <blockquote>
 <p>To create a new annotation</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://responder.thecape.ai/api/0.1/annotations/add-annotation?question=When%20is%20it%20most%20likely%20to%20snow%3F&amp;answer=In%20the%20winter'</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'http://localhost:5050/api/0.1/annotations/add-annotation?question=When%20is%20it%20most%20likely%20to%20snow%3F&amp;answer=In%20the%20winter'</span> <span class="se">\</span>
     -b <span class="s1">'session=&lt;your session id&gt;'</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">cape.client</span> <span class="kn">import</span> <span class="n">CapeClient</span>
 
@@ -2294,7 +2301,7 @@ Paraphrases might be less obvious ways of phrasing the same thing.</p>
     <span class="s">"answerId"</span><span class="p">:</span> <span class="s">"a67678b6-c3b1-11e7-abaa-9801a7ae6c69"</span>
 <span class="p">}</span>
 </code></pre><h3 id='definition-2'>Definition</h3>
-<p><code>/api/0.1/annotations/add-annotation</code> <a href="https://ui.thecape.ai/mock/full/api/0.1/annotations/add-annotation?question=When%20is%20it%20most%20likely%20to%20snow%3F&amp;answer=In%20the%20winter">Mock example</a></p>
+<p><code>/api/0.1/annotations/add-annotation</code> <a href="http://localhost:5051/mock/full/api/0.1/annotations/add-annotation?question=When%20is%20it%20most%20likely%20to%20snow%3F&amp;answer=In%20the%20winter">Mock example</a></p>
 
 <p>Questions (whether Canonical or Paraphrase) must be unique for each document.</p>
 <h3 id='input-2'>Input</h3>
@@ -2371,7 +2378,7 @@ Paraphrases might be less obvious ways of phrasing the same thing.</p>
 <blockquote>
 <p>To delete an existing annotation</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://responder.thecape.ai/api/0.1/annotations/delete-annotation?annotationId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69'</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'http://localhost:5050/api/0.1/annotations/delete-annotation?annotationId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69'</span> <span class="se">\</span>
     -b <span class="s1">'session=&lt;your session id&gt;'</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">cape.client</span> <span class="kn">import</span> <span class="n">CapeClient</span>
 
@@ -2391,7 +2398,7 @@ Paraphrases might be less obvious ways of phrasing the same thing.</p>
 <span class="o">}</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="s">"f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69"</span>
 </code></pre><h3 id='definition-3'>Definition</h3>
-<p><code>/api/0.1/annotations/delete-annotation</code> <a href="https://ui.thecape.ai/mock/full/api/0.1/annotations/delete-annotation?annotationId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69">Mock example</a></p>
+<p><code>/api/0.1/annotations/delete-annotation</code> <a href="http://localhost:5051/mock/full/api/0.1/annotations/delete-annotation?annotationId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69">Mock example</a></p>
 <h3 id='input-3'>Input</h3>
 <p>Input parameters in bold are required, all other parameters are optional.</p>
 
@@ -2434,7 +2441,7 @@ Paraphrases might be less obvious ways of phrasing the same thing.</p>
 <blockquote>
 <p>To add a paraphrase question to an existing annotation</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://responder.thecape.ai/api/0.1/annotations/add-paraphrase-question?annotationId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69&amp;question=What%20is%20your%20age?'</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'http://localhost:5050/api/0.1/annotations/add-paraphrase-question?annotationId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69&amp;question=What%20is%20your%20age?'</span> <span class="se">\</span>
     -b <span class="s1">'session=&lt;your session id&gt;'</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">cape.client</span> <span class="kn">import</span> <span class="n">CapeClient</span>
 
@@ -2454,7 +2461,7 @@ Paraphrases might be less obvious ways of phrasing the same thing.</p>
 <span class="o">}</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="s">"21e9689e-c3b2-11e7-8a22-9801a7ae6c69"</span>
 </code></pre><h3 id='definition-4'>Definition</h3>
-<p><code>/api/0.1/annotations/add-paraphrase-question</code> <a href="https://ui.thecape.ai/mock/full/api/0.1/annotations/add-paraphrase-question?annotationId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69&amp;question=What%20is%20your%20age?">Mock example</a></p>
+<p><code>/api/0.1/annotations/add-paraphrase-question</code> <a href="http://localhost:5051/mock/full/api/0.1/annotations/add-paraphrase-question?annotationId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69&amp;question=What%20is%20your%20age?">Mock example</a></p>
 <h3 id='input-4'>Input</h3>
 <p>Input parameters in bold are required, all other parameters are optional.</p>
 
@@ -2502,7 +2509,7 @@ Paraphrases might be less obvious ways of phrasing the same thing.</p>
 <blockquote>
 <p>To delete a paraphrase question</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://responder.thecape.ai/api/0.1/annotations/delete-paraphrase-question?questionId=21e9689e-c3b2-11e7-8a22-9801a7ae6c69'</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'http://localhost:5050/api/0.1/annotations/delete-paraphrase-question?questionId=21e9689e-c3b2-11e7-8a22-9801a7ae6c69'</span> <span class="se">\</span>
     -b <span class="s1">'session=&lt;your session id&gt;'</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">cape.client</span> <span class="kn">import</span> <span class="n">CapeClient</span>
 
@@ -2522,7 +2529,7 @@ Paraphrases might be less obvious ways of phrasing the same thing.</p>
 <span class="o">}</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="s">"21e9689e-c3b2-11e7-8a22-9801a7ae6c69"</span>
 </code></pre><h3 id='definition-5'>Definition</h3>
-<p><code>/api/0.1/annotations/delete-paraphrase-question</code> <a href="https://ui.thecape.ai/mock/full/api/0.1/annotations/delete-paraphrase-question?questionId=21e9689e-c3b2-11e7-8a22-9801a7ae6c69">Mock example</a></p>
+<p><code>/api/0.1/annotations/delete-paraphrase-question</code> <a href="http://localhost:5051/mock/full/api/0.1/annotations/delete-paraphrase-question?questionId=21e9689e-c3b2-11e7-8a22-9801a7ae6c69">Mock example</a></p>
 <h3 id='input-5'>Input</h3>
 <p>Input parameters in bold are required, all other parameters are optional.</p>
 
@@ -2565,7 +2572,7 @@ Paraphrases might be less obvious ways of phrasing the same thing.</p>
 <blockquote>
 <p>To edit an existing paraphrase question</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://responder.thecape.ai/api/0.1/annotations/edit-paraphrase-question?questionId=21e9689e-c3b2-11e7-8a22-9801a7ae6c69&amp;question=How%20old%20are%you?'</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'http://localhost:5050/api/0.1/annotations/edit-paraphrase-question?questionId=21e9689e-c3b2-11e7-8a22-9801a7ae6c69&amp;question=How%20old%20are%you?'</span> <span class="se">\</span>
     -b <span class="s1">'session=&lt;your session id&gt;'</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">cape.client</span> <span class="kn">import</span> <span class="n">CapeClient</span>
 
@@ -2585,7 +2592,7 @@ Paraphrases might be less obvious ways of phrasing the same thing.</p>
 <span class="o">}</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="s">"21e9689e-c3b2-11e7-8a22-9801a7ae6c69"</span>
 </code></pre><h3 id='definition-6'>Definition</h3>
-<p><code>/api/0.1/annotations/edit-paraphrase-question</code> <a href="https://ui.thecape.ai/mock/full/api/0.1/annotations/edit-paraphrase-question?questionId=21e9689e-c3b2-11e7-8a22-9801a7ae6c69&amp;question=How%20old%20are%20you?">Mock example</a></p>
+<p><code>/api/0.1/annotations/edit-paraphrase-question</code> <a href="http://localhost:5051/mock/full/api/0.1/annotations/edit-paraphrase-question?questionId=21e9689e-c3b2-11e7-8a22-9801a7ae6c69&amp;question=How%20old%20are%20you?">Mock example</a></p>
 <h3 id='input-6'>Input</h3>
 <p>Input parameters in bold are required, all other parameters are optional.</p>
 
@@ -2633,7 +2640,7 @@ Paraphrases might be less obvious ways of phrasing the same thing.</p>
 <blockquote>
 <p>To modify an annotation&#39;s canonical question</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://responder.thecape.ai/api/0.1/annotations/edit-canonical-question?annotationId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69&amp;question=What%20age%20are%20you?'</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'http://localhost:5050/api/0.1/annotations/edit-canonical-question?annotationId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69&amp;question=What%20age%20are%20you?'</span> <span class="se">\</span>
     -b <span class="s1">'session=&lt;your session id&gt;'</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">cape.client</span> <span class="kn">import</span> <span class="n">CapeClient</span>
 
@@ -2653,7 +2660,7 @@ Paraphrases might be less obvious ways of phrasing the same thing.</p>
 <span class="o">}</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="s">"f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69"</span>
 </code></pre><h3 id='definition-7'>Definition</h3>
-<p><code>/api/0.1/annotations/edit-canonical-question</code> <a href="https://ui.thecape.ai/mock/full/api/0.1/annotations/edit-canonical-question?annotationId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69&amp;question=What%age%20are%20you?">Mock example</a></p>
+<p><code>/api/0.1/annotations/edit-canonical-question</code> <a href="http://localhost:5051/mock/full/api/0.1/annotations/edit-canonical-question?annotationId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69&amp;question=What%age%20are%20you?">Mock example</a></p>
 <h3 id='input-7'>Input</h3>
 <p>Input parameters in bold are required, all other parameters are optional.</p>
 
@@ -2701,7 +2708,7 @@ Paraphrases might be less obvious ways of phrasing the same thing.</p>
 <blockquote>
 <p>To add an additional answer to an existing annotation</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://responder.thecape.ai/api/0.1/annotations/add-answer?annotationId=68c445cc-c3b2-11e7-8a88-9801a7ae6c69&amp;answer=Grey'</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'http://localhost:5050/api/0.1/annotations/add-answer?annotationId=68c445cc-c3b2-11e7-8a88-9801a7ae6c69&amp;answer=Grey'</span> <span class="se">\</span>
     -b <span class="s1">'session=&lt;your session id&gt;'</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">cape.client</span> <span class="kn">import</span> <span class="n">CapeClient</span>
 
@@ -2721,7 +2728,7 @@ Paraphrases might be less obvious ways of phrasing the same thing.</p>
 <span class="o">}</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="s">"703acab4-c3b2-11e7-b8b1-9801a7ae6c69"</span>
 </code></pre><h3 id='definition-8'>Definition</h3>
-<p><code>/api/0.1/annotations/add-answer</code> <a href="https://ui.thecape.ai/mock/full/api/0.1/annotations/add-answer?annotationId=68c445cc-c3b2-11e7-8a88-9801a7ae6c69&amp;answer=Grey">Mock example</a></p>
+<p><code>/api/0.1/annotations/add-answer</code> <a href="http://localhost:5051/mock/full/api/0.1/annotations/add-answer?annotationId=68c445cc-c3b2-11e7-8a88-9801a7ae6c69&amp;answer=Grey">Mock example</a></p>
 <h3 id='input-8'>Input</h3>
 <p>Input parameters in bold are required, all other parameters are optional.</p>
 
@@ -2769,7 +2776,7 @@ Paraphrases might be less obvious ways of phrasing the same thing.</p>
 <blockquote>
 <p>To delete an answer from an annotation</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://responder.thecape.ai/api/0.1/annotations/delete-answer?answerId=703acab4-c3b2-11e7-b8b1-9801a7ae6c69'</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'http://localhost:5050/api/0.1/annotations/delete-answer?answerId=703acab4-c3b2-11e7-b8b1-9801a7ae6c69'</span> <span class="se">\</span>
     -b <span class="s1">'session=&lt;your session id&gt;'</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">cape.client</span> <span class="kn">import</span> <span class="n">CapeClient</span>
 
@@ -2796,7 +2803,7 @@ at random from the valid answers.</p>
 
 <p>Attempting to delete the last remaining answer in an annotation will result in an error.</p>
 <h3 id='definition-9'>Definition</h3>
-<p><code>/api/0.1/annotations/delete-answer</code> <a href="https://ui.thecape.ai/mock/full/api/0.1/annotations/delete-answer?answerId=703acab4-c3b2-11e7-b8b1-9801a7ae6c69">Mock example</a></p>
+<p><code>/api/0.1/annotations/delete-answer</code> <a href="http://localhost:5051/mock/full/api/0.1/annotations/delete-answer?answerId=703acab4-c3b2-11e7-b8b1-9801a7ae6c69">Mock example</a></p>
 <h3 id='input-9'>Input</h3>
 <p>Input parameters in bold are required, all other parameters are optional.</p>
 
@@ -2839,7 +2846,7 @@ at random from the valid answers.</p>
 <blockquote>
 <p>To edit an answer of an existing annotation</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://responder.thecape.ai/api/0.1/annotations/edit-answer?answerId=703acab4-c3b2-11e7-b8b1-9801a7ae6c69&amp;answer=Blue'</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'http://localhost:5050/api/0.1/annotations/edit-answer?answerId=703acab4-c3b2-11e7-b8b1-9801a7ae6c69&amp;answer=Blue'</span> <span class="se">\</span>
     -b <span class="s1">'session=&lt;your session id&gt;'</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">cape.client</span> <span class="kn">import</span> <span class="n">CapeClient</span>
 
@@ -2859,7 +2866,7 @@ at random from the valid answers.</p>
 <span class="o">}</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="s">"703acab4-c3b2-11e7-b8b1-9801a7ae6c69"</span>
 </code></pre><h3 id='definition-10'>Definition</h3>
-<p><code>/api/0.1/annotations/edit-answer</code> <a href="https://ui.thecape.ai/mock/full/api/0.1/annotations/edit-answer?answerId=703acab4-c3b2-11e7-b8b1-9801a7ae6c69&amp;answer=Blue">Mock example</a></p>
+<p><code>/api/0.1/annotations/edit-answer</code> <a href="http://localhost:5051/mock/full/api/0.1/annotations/edit-answer?answerId=703acab4-c3b2-11e7-b8b1-9801a7ae6c69&amp;answer=Blue">Mock example</a></p>
 <h3 id='input-10'>Input</h3>
 <p>Input parameters in bold are required, all other parameters are optional.</p>
 
@@ -2907,7 +2914,7 @@ at random from the valid answers.</p>
 <blockquote>
 <p>To retrieve the currently logged in user&#39;s inbox</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://responder.thecape.ai/api/0.1/inbox/get-inbox'</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'http://localhost:5050/api/0.1/inbox/get-inbox'</span> <span class="se">\</span>
     -b <span class="s1">'session=&lt;your session id&gt;'</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">cape.client</span> <span class="kn">import</span> <span class="n">CapeClient</span>
 
@@ -2993,7 +3000,7 @@ at random from the valid answers.</p>
     <span class="p">]</span>
 <span class="p">}</span>
 </code></pre><h3 id='definition'>Definition</h3>
-<p><code>/api/0.1/inbox/get-inbox</code> <a href="https://ui.thecape.ai/mock/full/api/0.1/inbox/get-inbox">Mock example</a></p>
+<p><code>/api/0.1/inbox/get-inbox</code> <a href="http://localhost:5051/mock/full/api/0.1/inbox/get-inbox">Mock example</a></p>
 <h3 id='input'>Input</h3>
 <p>Input parameters in bold are required, all other parameters are optional.</p>
 
@@ -3083,7 +3090,7 @@ at random from the valid answers.</p>
 <blockquote>
 <p>To mark an inbox item as having been read</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://responder.thecape.ai/api/0.1/inbox/mark-inbox-read?inboxId=123'</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'http://localhost:5050/api/0.1/inbox/mark-inbox-read?inboxId=123'</span> <span class="se">\</span>
     -b <span class="s1">'session=&lt;your session id&gt;'</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">cape.client</span> <span class="kn">import</span> <span class="n">CapeClient</span>
 
@@ -3103,7 +3110,7 @@ at random from the valid answers.</p>
 <span class="o">}</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="s">"7e94dfae-c3b1-11e7-a15b-9801a7ae6c69"</span>
 </code></pre><h3 id='definition-2'>Definition</h3>
-<p><code>/api/0.1/inbox/mark-inbox-read</code> <a href="https://ui.thecape.ai/mock/full/api/0.1/inbox/mark-inbox-read?inboxId=7e94dfae-c3b1-11e7-a15b-9801a7ae6c69">Mock example</a></p>
+<p><code>/api/0.1/inbox/mark-inbox-read</code> <a href="http://localhost:5051/mock/full/api/0.1/inbox/mark-inbox-read?inboxId=7e94dfae-c3b1-11e7-a15b-9801a7ae6c69">Mock example</a></p>
 <h3 id='input-2'>Input</h3>
 <p>Input parameters in bold are required, all other parameters are optional.</p>
 
@@ -3146,7 +3153,7 @@ at random from the valid answers.</p>
 <blockquote>
 <p>To move an inbox item to the archive</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://responder.thecape.ai/api/0.1/inbox/archive-inbox?inboxId=7e94dfae-c3b1-11e7-a15b-9801a7ae6c69'</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'http://localhost:5050/api/0.1/inbox/archive-inbox?inboxId=7e94dfae-c3b1-11e7-a15b-9801a7ae6c69'</span> <span class="se">\</span>
     -b <span class="s1">'session=&lt;your session id&gt;'</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">cape.client</span> <span class="kn">import</span> <span class="n">CapeClient</span>
 
@@ -3166,7 +3173,7 @@ at random from the valid answers.</p>
 <span class="o">}</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="s">"7e94dfae-c3b1-11e7-a15b-9801a7ae6c69"</span>
 </code></pre><h3 id='definition-3'>Definition</h3>
-<p><code>/api/0.1/inbox/archive-inbox</code> <a href="https://ui.thecape.ai/mock/full/api/0.1/inbox/archive-inbox?inboxId=7e94dfae-c3b1-11e7-a15b-9801a7ae6c69">Mock example</a></p>
+<p><code>/api/0.1/inbox/archive-inbox</code> <a href="http://localhost:5051/mock/full/api/0.1/inbox/archive-inbox?inboxId=7e94dfae-c3b1-11e7-a15b-9801a7ae6c69">Mock example</a></p>
 <h3 id='input-3'>Input</h3>
 <p>Input parameters in bold are required, all other parameters are optional.</p>
 
@@ -3211,7 +3218,7 @@ at random from the valid answers.</p>
 <blockquote>
 <p>To get the current default threshold</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://responder.thecape.ai/api/0.1/user/get-default-threshold'</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'http://localhost:5050/api/0.1/user/get-default-threshold'</span> <span class="se">\</span>
     -b <span class="s1">'session=&lt;your session id&gt;'</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">cape.client</span> <span class="kn">import</span> <span class="n">CapeClient</span>
 
@@ -3231,7 +3238,7 @@ at random from the valid answers.</p>
 <span class="o">}</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="s">"medium"</span>
 </code></pre><h3 id='definition'>Definition</h3>
-<p><code>/api/0.1/user/get-default-threshold</code> <a href="https://ui.thecape.ai/mock/full/api/0.1/user/get-default-threshold">Mock example</a></p>
+<p><code>/api/0.1/user/get-default-threshold</code> <a href="http://localhost:5051/mock/full/api/0.1/user/get-default-threshold">Mock example</a></p>
 <h3 id='input'>Input</h3>
 <p>None</p>
 <h3 id='result'>Result</h3>
@@ -3262,7 +3269,7 @@ at random from the valid answers.</p>
 <blockquote>
 <p>To set a new default threshold</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://responder.thecape.ai/api/0.1/user/set-default-threshold?threshold=high'</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'http://localhost:5050/api/0.1/user/set-default-threshold?threshold=high'</span> <span class="se">\</span>
     -b <span class="s1">'session=&lt;your session id&gt;'</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">cape.client</span> <span class="kn">import</span> <span class="n">CapeClient</span>
 
@@ -3282,7 +3289,7 @@ at random from the valid answers.</p>
 <span class="o">}</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="s">"high"</span>
 </code></pre><h3 id='definition-2'>Definition</h3>
-<p><code>/api/0.1/user/set-default-threshold</code> <a href="https://ui.thecape.ai/mock/full/api/0.1/user/set-default-threshold?threshold=high">Mock example</a></p>
+<p><code>/api/0.1/user/set-default-threshold</code> <a href="http://localhost:5051/mock/full/api/0.1/user/set-default-threshold?threshold=high">Mock example</a></p>
 <h3 id='input-2'>Input</h3>
 <p>Input parameters in bold are required, all other parameters are optional.</p>
 
@@ -3333,7 +3340,7 @@ at random from the valid answers.</p>
 <blockquote>
 <p>To set a new forward email address</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://responder.thecape.ai/api/0.1/user/set-forward-email?email=test@bloomsbury.ai'</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'http://localhost:5050/api/0.1/user/set-forward-email?email=test@bloomsbury.ai'</span> <span class="se">\</span>
     -b <span class="s1">'session=&lt;your session id&gt;'</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">cape.client</span> <span class="kn">import</span> <span class="n">CapeClient</span>
 
@@ -3353,7 +3360,7 @@ at random from the valid answers.</p>
 <span class="o">}</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="s">"test@bloomsbury.ai"</span>
 </code></pre><h3 id='definition-3'>Definition</h3>
-<p><code>/api/0.1/user/set-forward-email</code> <a href="https://ui.thecape.ai/mock/full/api/0.1/user/set-forward-email?email=test@bloomsbury.ai">Mock example</a></p>
+<p><code>/api/0.1/user/set-forward-email</code> <a href="http://localhost:5051/mock/full/api/0.1/user/set-forward-email?email=test@bloomsbury.ai">Mock example</a></p>
 <h3 id='input-3'>Input</h3>
 <p>Input parameters in bold are required, all other parameters are optional.</p>
 
@@ -3396,7 +3403,7 @@ at random from the valid answers.</p>
 <blockquote>
 <p>To get the current user&#39;s profile</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://responder.thecape.ai/api/0.1/user/get-profile'</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'http://localhost:5050/api/0.1/user/get-profile'</span> <span class="se">\</span>
     -b <span class="s1">'session=&lt;your session id&gt;'</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">cape.client</span> <span class="kn">import</span> <span class="n">CapeClient</span>
 
@@ -3427,7 +3434,7 @@ at random from the valid answers.</p>
     <span class="s">"forwardEmailVerified"</span><span class="p">:</span> <span class="bp">False</span>
   <span class="p">}</span>
 </code></pre><h3 id='definition-4'>Definition</h3>
-<p><code>/api/0.1/user/get-profile</code> <a href="https://ui.thecape.ai/mock/full/api/0.1/user/get-profile">Mock example</a></p>
+<p><code>/api/0.1/user/get-profile</code> <a href="http://localhost:5051/mock/full/api/0.1/user/get-profile">Mock example</a></p>
 <h3 id='input-4'>Input</h3>
 <p>None</p>
 <h3 id='result-4'>Result</h3>
@@ -3469,6 +3476,167 @@ at random from the valid answers.</p>
 <td>Whether or not the forward email has been verified. For more info click <a href='#setting-the-forward-email-address'>here</a>.</td>
 </tr>
 </tbody></table>
+<h1 id='user-creation-and-deletion'>User - Creation and Deletion</h1>
+<p>When the Google and Facebook account logins are disabled (default behaviour).
+The only way to add new users is by using the SUPER ADMIN endpoints and providing the SUPER ADMIN token.
+This token has to configured when launching the backend, it is by default <code>REPLACEME</code></p>
+<h2 id='cape-super-admin-creating-a-new-account'>Cape SUPER ADMIN - Creating a new account</h2>
+<p>To create a new account provide, the super admin token, the login, password and optionally the user token for the new user.
+Please note that the login and user token need to be unique or you will get an error.</p>
+
+<blockquote>
+<p>To create a new user:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -v <span class="s2">"http://localhost:5050/api/0.1/user/create-user?userId=login&amp;password=password&amp;token=token&amp;superAdminToken=REPLACEME"</span>
+</code></pre>
+<blockquote>
+<p>This returns the username on success</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>GET /api/0.1/user/create-user?userId<span class="o">=</span>login&amp;password<span class="o">=</span>password&amp;token<span class="o">=</span>token&amp;superAdminToken<span class="o">=</span>REPLACEME HTTP/1.1
+<span class="gp">&gt; </span>Host: localhost:5050
+<span class="gp">&gt; </span>User-Agent: curl/7.43.0
+<span class="gp">&gt; </span>Accept: <span class="k">*</span>/<span class="k">*</span>
+&gt;
+&lt; HTTP/1.1 200 OK
+&lt; Connection: keep-alive
+&lt; Keep-Alive: 600
+&lt; Access-Control-Allow-Origin: <span class="k">*</span>
+&lt; Access-Control-Allow-Credentials: <span class="nb">true</span>
+&lt; Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS
+&lt; Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token
+&lt; Content-Length: 46
+&lt; Content-Type: application/json
+&lt;
+<span class="k">*</span> Connection <span class="c">#0 to host localhost left intact</span>
+<span class="o">{</span><span class="s2">"success"</span>:true,<span class="s2">"result"</span>:<span class="o">{</span><span class="s2">"username"</span>:<span class="s2">"login"</span><span class="o">}}</span>
+</code></pre><h3 id='definition'>Definition</h3>
+<p><code>/api/0.1/user/create-user</code></p>
+
+<p>No Mock example for this endpoint.</p>
+<h3 id='input'>Input</h3>
+<p>Input parameters in bold are required, all other parameters are optional.</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>userId</strong></td>
+<td>mylogin</td>
+<td>The login of the user.</td>
+</tr>
+<tr>
+<td><strong>password</strong></td>
+<td>mypassword</td>
+<td>The password of the user.</td>
+</tr>
+<tr>
+<td>**superAdminToken</td>
+<td>REPLACEME</td>
+<td>The super admin token of the backend.</td>
+</tr>
+<tr>
+<td>token</td>
+<td>mytoken</td>
+<td>The user token of the user.</td>
+</tr>
+</tbody></table>
+<h3 id='result'>Result</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>username</td>
+<td>mylogin</td>
+<td>For indicative purposes the login of the new user.</td>
+</tr>
+</tbody></table>
+<h2 id='cape-super-admin-deleting-an-existing-account'>Cape SUPER ADMIN - Deleting an existing account</h2>
+<p>To delete a user account provide, the super admin token, the existing user login.
+Please note that the login must exist or you will get an error.
+Please note that all the user data, including documents, annotations and saved replies will be permanently deleted.</p>
+
+<blockquote>
+<p>To delete an existing user:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -v <span class="s2">"http://localhost:5050/api/0.1/user/delete-user?userId=login&amp;superAdminToken=REPLACEME"</span>
+</code></pre>
+<blockquote>
+<p>This returns the username on success</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>GET /api/0.1/user/delete-user?userId<span class="o">=</span>login&amp;superAdminToken<span class="o">=</span>REPLACEME HTTP/1.1
+<span class="gp">&gt; </span>Host: localhost:5050
+<span class="gp">&gt; </span>User-Agent: curl/7.43.0
+<span class="gp">&gt; </span>Accept: <span class="k">*</span>/<span class="k">*</span>
+&gt;
+&lt; HTTP/1.1 200 OK
+&lt; Connection: keep-alive
+&lt; Keep-Alive: 600
+&lt; Access-Control-Allow-Origin: <span class="k">*</span>
+&lt; Access-Control-Allow-Credentials: <span class="nb">true</span>
+&lt; Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS
+&lt; Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token
+&lt; Content-Length: 46
+&lt; Content-Type: application/json
+&lt;
+<span class="k">*</span> Connection <span class="c">#0 to host localhost left intact</span>
+<span class="o">{</span><span class="s2">"success"</span>:true,<span class="s2">"result"</span>:<span class="o">{</span><span class="s2">"username"</span>:<span class="s2">"login"</span><span class="o">}}</span>
+</code></pre><h3 id='definition-2'>Definition</h3>
+<p><code>/api/0.1/user/delete-user</code></p>
+
+<p>No Mock example for this endpoint.</p>
+<h3 id='input-2'>Input</h3>
+<p>Input parameters in bold are required, all other parameters are optional.</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>userId</strong></td>
+<td>mylogin</td>
+<td>The login of the user.</td>
+</tr>
+<tr>
+<td><strong>password</strong></td>
+<td>mypassword</td>
+<td>The password of the user.</td>
+</tr>
+<tr>
+<td>**superAdminToken</td>
+<td>REPLACEME</td>
+<td>The super admin token of the backend.</td>
+</tr>
+<tr>
+<td>token</td>
+<td>mytoken</td>
+<td>The user token of the user.</td>
+</tr>
+</tbody></table>
+<h3 id='result-2'>Result</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>username</td>
+<td>mylogin</td>
+<td>For indicative purposes the login of the new user.</td>
+</tr>
+</tbody></table>
 <h1 id='handling-results-with-lists'>Handling results with lists</h1>
 <p>Many methods return lists of items. Where possible we&#39;ve provided a consistent
 interface to all lists. Any method that returns a list will accept the 
@@ -3486,7 +3654,7 @@ setting <em>numberOfItems</em> to 5, and <em>offset</em> to 95.</p>
 <blockquote>
 <p>To fetch just the first item from the inbox</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://responder.thecape.ai/api/0.1/inbox/get-inbox?numberOfItems=1'</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'http://localhost:5050/api/0.1/inbox/get-inbox?numberOfItems=1'</span> <span class="se">\</span>
     -b <span class="s1">'session=&lt;your session id&gt;'</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">cape.client</span> <span class="kn">import</span> <span class="n">CapeClient</span>
 
@@ -3533,7 +3701,7 @@ setting <em>numberOfItems</em> to 5, and <em>offset</em> to 95.</p>
 <blockquote>
 <p>We can try to fetch the next 5 items</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://responder.thecape.ai/api/0.1/inbox/get-inbox?numberOfItems=5&amp;offset=1'</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'http://localhost:5050/api/0.1/inbox/get-inbox?numberOfItems=5&amp;offset=1'</span> <span class="se">\</span>
     -b <span class="s1">'session=&lt;your session id&gt;'</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">cape.client</span> <span class="kn">import</span> <span class="n">CapeClient</span>
 
@@ -3595,7 +3763,7 @@ setting <em>numberOfItems</em> to 5, and <em>offset</em> to 95.</p>
     <span class="p">]</span>
 <span class="p">}</span>
 </code></pre><h1 id='mock-services'>Mock services</h1>
-<p>In additional to the genuine API service we provide four mock services which can be used to assist with testing.
+<p>In additional to the genuine API service the <a href="https://github.com/bloomsburyai/cape-frontend">frontend</a> service provides four mock services which can be used to assist with testing.
 None of these mock services has any permanent effect and will always return the same responses, making them suitable for
 inclusion in your own unit tests.</p>
 
@@ -3632,7 +3800,7 @@ returns an example of the output you could expect to see from the real API.</p>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>The full mock service is available at <a href="https://ui.thecape.ai/mock/full/api/0.1/">https://ui.thecape.ai/mock/full/api/0.1/</a>.
+<p>The full mock service is available at <a href="http://localhost:5051/mock/full/api/0.1/">http://localhost:5051/mock/full/api/0.1/</a>.
 It aims at giving responses describing &quot;full&quot; cases, this might include :</p>
 
 <ul>
@@ -3651,7 +3819,7 @@ It aims at giving responses describing &quot;full&quot; cases, this might includ
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>The unlucky mock service is available at <a href="https://ui.thecape.ai/mock/unlucky/api/0.1/">https://ui.thecape.ai/mock/unlucky/api/0.1/</a>.
+<p>The unlucky mock service is available at <a href="http://localhost:5051/mock/unlucky/api/0.1/">http://localhost:5051/mock/unlucky/api/0.1/</a>.
 It aims at giving responses describing &quot;unlucky&quot; cases, this might include :</p>
 
 <ul>
@@ -3677,7 +3845,7 @@ return false, but an empty search response would be successful just without any 
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>The error mock service is available at <a href="https://ui.thecape.ai/mock/error/api/0.1/">https://ui.thecape.ai/mock/error/api/0.1/</a>.
+<p>The error mock service is available at <a href="http://localhost:5051/mock/error/api/0.1/">http://localhost:5051/mock/error/api/0.1/</a>.
 It aims at giving responses describing &quot;server error&quot; cases, this always returns the same response from all endpoints.</p>
 <h2 id='timeout-mock-service'>Timeout mock service</h2>
 <blockquote>
@@ -3685,7 +3853,7 @@ It aims at giving responses describing &quot;server error&quot; cases, this alwa
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w">
 </span></code></pre>
-<p>The timeout mock service is available at <a href="https://ui.thecape.ai/mock/timeout/api/0.1/">https://ui.thecape.ai/mock/timeout/api/0.1/</a>.
+<p>The timeout mock service is available at <a href="http://localhost:5051/mock/timeout/api/0.1/">http://localhost:5051/mock/timeout/api/0.1/</a>.
 It aims at simulating a server hanging and never returning a response, this always has the same behaviour from all endpoints.</p>
 
       </div>

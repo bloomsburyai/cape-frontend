@@ -23,7 +23,7 @@ All saved reply methods require authentication.
 > To retrieve a list of saved replies
 
 ```shell
-curl 'https://responder.thecape.ai/api/0.1/saved-replies/get-saved-replies' \
+curl 'http://localhost:5050/api/0.1/saved-replies/get-saved-replies' \
     -b 'session=<your session id>'
 ```
 
@@ -128,7 +128,7 @@ print(saved_replies)
 
 ### Definition
 
-`/api/0.1/saved-replies/get-saved-replies` [Mock example](https://ui.thecape.ai/mock/full/api/0.1/saved-replies/get-saved-replies)
+`/api/0.1/saved-replies/get-saved-replies` [Mock example](http://localhost:5051/mock/full/api/0.1/saved-replies/get-saved-replies)
 
 ### Input
 
@@ -167,7 +167,7 @@ created|1508161734|Timestamp indicating when this saved reply was created
 > To create a new saved reply
 
 ```shell
-curl 'https://responder.thecape.ai/api/0.1/saved-replies/add-saved-reply?question=When%20is%20it%20most%20likely%20to%20snow%3F&answer=In%20the%20winter' \
+curl 'http://localhost:5050/api/0.1/saved-replies/add-saved-reply?question=When%20is%20it%20most%20likely%20to%20snow%3F&answer=In%20the%20winter' \
     -b 'session=<your session id>'
 ```
 
@@ -201,7 +201,7 @@ print(response)
 
 ### Definition
 
-`/api/0.1/saved-replies/add-saved-reply` [Mock example](https://ui.thecape.ai/mock/full/api/0.1/saved-replies/add-saved-reply?question=When%20is%20it%20most%20likely%20to%20snow%3F&answer=In%20the%20winter)
+`/api/0.1/saved-replies/add-saved-reply` [Mock example](http://localhost:5051/mock/full/api/0.1/saved-replies/add-saved-reply?question=When%20is%20it%20most%20likely%20to%20snow%3F&answer=In%20the%20winter)
 
 Questions (whether Canonical or Paraphrase) must be unique.
 
@@ -237,7 +237,7 @@ Deletes a saved reply, and its associated canonical and paraphrase questions.
 > To delete an existing saved reply
 
 ```shell
-curl 'https://responder.thecape.ai/api/0.1/saved-replies/delete-saved-reply?replyId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69' \
+curl 'http://localhost:5050/api/0.1/saved-replies/delete-saved-reply?replyId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69' \
     -b 'session=<your session id>'
 ```
 
@@ -267,7 +267,7 @@ print(reply_id)
 
 ### Definition
 
-`/api/0.1/saved-replies/delete-saved-reply` [Mock example](https://ui.thecape.ai/mock/full/api/0.1/saved-replies/delete-saved-reply?replyId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69)
+`/api/0.1/saved-replies/delete-saved-reply` [Mock example](http://localhost:5051/mock/full/api/0.1/saved-replies/delete-saved-reply?replyId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69)
 
 ### Input
 
@@ -297,7 +297,7 @@ replyId|f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69|The Id of the saved reply that was 
 > To add a paraphrase question to an existing saved reply
 
 ```shell
-curl 'https://responder.thecape.ai/api/0.1/saved-replies/add-paraphrase-question?replyId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69&question=What%20is%20your%20age?' \
+curl 'http://localhost:5050/api/0.1/saved-replies/add-paraphrase-question?replyId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69&question=What%20is%20your%20age?' \
     -b 'session=<your session id>'
 ```
 
@@ -327,7 +327,7 @@ print(question_id)
 
 ### Definition
 
-`/api/0.1/saved-replies/add-paraphrase-question` [Mock example](https://ui.thecape.ai/mock/full/api/0.1/saved-replies/add-paraphrase-question?replyId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69&question=What%20is%20your%20age?)
+`/api/0.1/saved-replies/add-paraphrase-question` [Mock example](http://localhost:5051/mock/full/api/0.1/saved-replies/add-paraphrase-question?replyId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69&question=What%20is%20your%20age?)
 
 ### Input
 
@@ -358,7 +358,7 @@ questionId|21e9689e-c3b2-11e7-8a22-9801a7ae6c69|The Id of the paraphrased questi
 > To delete a paraphrase question
 
 ```shell
-curl 'https://responder.thecape.ai/api/0.1/saved-replies/delete-paraphrase-question?questionId=21e9689e-c3b2-11e7-8a22-9801a7ae6c69' \
+curl 'http://localhost:5050/api/0.1/saved-replies/delete-paraphrase-question?questionId=21e9689e-c3b2-11e7-8a22-9801a7ae6c69' \
     -b 'session=<your session id>'
 ```
 
@@ -388,7 +388,7 @@ print(question_id)
 
 ### Definition
 
-`/api/0.1/saved-replies/delete-paraphrase-question` [Mock example](https://ui.thecape.ai/mock/full/api/0.1/saved-replies/delete-paraphrase-question?questionId=21e9689e-c3b2-11e7-8a22-9801a7ae6c69)
+`/api/0.1/saved-replies/delete-paraphrase-question` [Mock example](http://localhost:5051/mock/full/api/0.1/saved-replies/delete-paraphrase-question?questionId=21e9689e-c3b2-11e7-8a22-9801a7ae6c69)
 
 ### Input
 
@@ -418,7 +418,7 @@ questionId|21e9689e-c3b2-11e7-8a22-9801a7ae6c69|The Id of the paraphrase questio
 > To edit an existing paraphrase question
 
 ```shell
-curl 'https://responder.thecape.ai/api/0.1/saved-replies/edit-paraphrase-question?questionId=21e9689e-c3b2-11e7-8a22-9801a7ae6c69&question=How%20old%20are%you?' \
+curl 'http://localhost:5050/api/0.1/saved-replies/edit-paraphrase-question?questionId=21e9689e-c3b2-11e7-8a22-9801a7ae6c69&question=How%20old%20are%you?' \
     -b 'session=<your session id>'
 ```
 
@@ -448,7 +448,7 @@ print(question_id)
 
 ### Definition
 
-`/api/0.1/saved-replies/edit-paraphrase-question` [Mock example](https://ui.thecape.ai/mock/full/api/0.1/saved-replies/edit-paraphrase-question?questionId=21e9689e-c3b2-11e7-8a22-9801a7ae6c69&question=How%20old%20are%20you?)
+`/api/0.1/saved-replies/edit-paraphrase-question` [Mock example](http://localhost:5051/mock/full/api/0.1/saved-replies/edit-paraphrase-question?questionId=21e9689e-c3b2-11e7-8a22-9801a7ae6c69&question=How%20old%20are%20you?)
 
 ### Input
 
@@ -479,7 +479,7 @@ questionId|21e9689e-c3b2-11e7-8a22-9801a7ae6c69|The Id of the paraphrase questio
 > To modify a saved reply's canonical question
 
 ```shell
-curl 'https://responder.thecape.ai/api/0.1/saved-replies/edit-canonical-question?replyId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69&question=What%20age%20are%20you?' \
+curl 'http://localhost:5050/api/0.1/saved-replies/edit-canonical-question?replyId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69&question=What%20age%20are%20you?' \
     -b 'session=<your session id>'
 ```
 
@@ -509,7 +509,7 @@ print(reply_id)
 
 ### Definition
 
-`/api/0.1/saved-replies/edit-canonical-question` [Mock example](https://ui.thecape.ai/mock/full/api/0.1/saved-replies/edit-canonical-question?replyId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69&question=What%age%20are%20you?)
+`/api/0.1/saved-replies/edit-canonical-question` [Mock example](http://localhost:5051/mock/full/api/0.1/saved-replies/edit-canonical-question?replyId=f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69&question=What%age%20are%20you?)
 
 ### Input
 
@@ -540,7 +540,7 @@ replyId|f9f1cf90-c3b1-11e7-91a1-9801a7ae6c69|The Id of the saved reply that was 
 > To add an additional answer to an existing saved reply
 
 ```shell
-curl 'https://responder.thecape.ai/api/0.1/saved-replies/add-answer?replyId=68c445cc-c3b2-11e7-8a88-9801a7ae6c69&answer=Grey' \
+curl 'http://localhost:5050/api/0.1/saved-replies/add-answer?replyId=68c445cc-c3b2-11e7-8a88-9801a7ae6c69&answer=Grey' \
     -b 'session=<your session id>'
 ```
 
@@ -570,7 +570,7 @@ print(answer_id)
 
 ### Definition
 
-`/api/0.1/saved-replies/add-answer` [Mock example](https://ui.thecape.ai/mock/full/api/0.1/saved-replies/add-answer?replyId=68c445cc-c3b2-11e7-8a88-9801a7ae6c69&answer=Grey)
+`/api/0.1/saved-replies/add-answer` [Mock example](http://localhost:5051/mock/full/api/0.1/saved-replies/add-answer?replyId=68c445cc-c3b2-11e7-8a88-9801a7ae6c69&answer=Grey)
 
 ### Input
 
@@ -601,7 +601,7 @@ answerId|703acab4-c3b2-11e7-b8b1-9801a7ae6c69|The Id of the answer that was adde
 > To delete an answer from a saved reply
 
 ```shell
-curl 'https://responder.thecape.ai/api/0.1/saved-replies/delete-answer?answerId=703acab4-c3b2-11e7-b8b1-9801a7ae6c69' \
+curl 'http://localhost:5050/api/0.1/saved-replies/delete-answer?answerId=703acab4-c3b2-11e7-b8b1-9801a7ae6c69' \
     -b 'session=<your session id>'
 ```
 
@@ -638,7 +638,7 @@ Attempting to delete the last remaining answer in a saved reply will result in a
 
 ### Definition
 
-`/api/0.1/saved-replies/delete-answer` [Mock example](https://ui.thecape.ai/mock/full/api/0.1/saved-replies/delete-answer?answerId=703acab4-c3b2-11e7-b8b1-9801a7ae6c69)
+`/api/0.1/saved-replies/delete-answer` [Mock example](http://localhost:5051/mock/full/api/0.1/saved-replies/delete-answer?answerId=703acab4-c3b2-11e7-b8b1-9801a7ae6c69)
 
 ### Input
 
@@ -668,7 +668,7 @@ answerId|703acab4-c3b2-11e7-b8b1-9801a7ae6c69|The Id of the answer that was dele
 > To edit an answer of an existing saved reply
 
 ```shell
-curl 'https://responder.thecape.ai/api/0.1/saved-replies/edit-answer?answerId=703acab4-c3b2-11e7-b8b1-9801a7ae6c69&answer=Blue' \
+curl 'http://localhost:5050/api/0.1/saved-replies/edit-answer?answerId=703acab4-c3b2-11e7-b8b1-9801a7ae6c69&answer=Blue' \
     -b 'session=<your session id>'
 ```
 
@@ -698,7 +698,7 @@ print(answer_id)
 
 ### Definition
 
-`/api/0.1/saved-replies/edit-answer` [Mock example](https://ui.thecape.ai/mock/full/api/0.1/saved-replies/edit-answer?answerId=703acab4-c3b2-11e7-b8b1-9801a7ae6c69&answer=Blue)
+`/api/0.1/saved-replies/edit-answer` [Mock example](http://localhost:5051/mock/full/api/0.1/saved-replies/edit-answer?answerId=703acab4-c3b2-11e7-b8b1-9801a7ae6c69&answer=Blue)
 
 ### Input
 

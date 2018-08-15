@@ -13,7 +13,7 @@
 > To retrieve the currently logged in user's inbox
 
 ```shell
-curl 'https://responder.thecape.ai/api/0.1/inbox/get-inbox' \
+curl 'http://localhost:5050/api/0.1/inbox/get-inbox' \
     -b 'session=<your session id>'
 ```
 
@@ -109,7 +109,7 @@ print(inbox)
 
 ### Definition
 
-`/api/0.1/inbox/get-inbox` [Mock example](https://ui.thecape.ai/mock/full/api/0.1/inbox/get-inbox)
+`/api/0.1/inbox/get-inbox` [Mock example](http://localhost:5051/mock/full/api/0.1/inbox/get-inbox)
 
 ### Input
 
@@ -150,7 +150,7 @@ created|1508162032|Timestamp indicating when this question was asked
 > To mark an inbox item as having been read
 
 ```shell
-curl 'https://responder.thecape.ai/api/0.1/inbox/mark-inbox-read?inboxId=123' \
+curl 'http://localhost:5050/api/0.1/inbox/mark-inbox-read?inboxId=123' \
     -b 'session=<your session id>'
 ```
 
@@ -180,7 +180,7 @@ print(inbox_id)
 
 ### Definition
 
-`/api/0.1/inbox/mark-inbox-read` [Mock example](https://ui.thecape.ai/mock/full/api/0.1/inbox/mark-inbox-read?inboxId=7e94dfae-c3b1-11e7-a15b-9801a7ae6c69)
+`/api/0.1/inbox/mark-inbox-read` [Mock example](http://localhost:5051/mock/full/api/0.1/inbox/mark-inbox-read?inboxId=7e94dfae-c3b1-11e7-a15b-9801a7ae6c69)
 
 ### Input
 
@@ -210,7 +210,7 @@ inboxId|7e94dfae-c3b1-11e7-a15b-9801a7ae6c69|The inbox item that was marked as r
 > To move an inbox item to the archive
 
 ```shell
-curl 'https://responder.thecape.ai/api/0.1/inbox/archive-inbox?inboxId=7e94dfae-c3b1-11e7-a15b-9801a7ae6c69' \
+curl 'http://localhost:5050/api/0.1/inbox/archive-inbox?inboxId=7e94dfae-c3b1-11e7-a15b-9801a7ae6c69' \
     -b 'session=<your session id>'
 ```
 
@@ -240,7 +240,7 @@ print(inbox_id)
 
 ### Definition
 
-`/api/0.1/inbox/archive-inbox` [Mock example](https://ui.thecape.ai/mock/full/api/0.1/inbox/archive-inbox?inboxId=7e94dfae-c3b1-11e7-a15b-9801a7ae6c69)
+`/api/0.1/inbox/archive-inbox` [Mock example](http://localhost:5051/mock/full/api/0.1/inbox/archive-inbox?inboxId=7e94dfae-c3b1-11e7-a15b-9801a7ae6c69)
 
 ### Input
 

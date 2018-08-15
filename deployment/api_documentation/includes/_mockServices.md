@@ -1,7 +1,7 @@
 
 # Mock services
 
-In additional to the genuine API service we provide four mock services which can be used to assist with testing.
+In additional to the genuine API service the [frontend](https://github.com/bloomsburyai/cape-frontend) service provides four mock services which can be used to assist with testing.
 None of these mock services has any permanent effect and will always return the same responses, making them suitable for
 inclusion in your own unit tests.
 
@@ -41,7 +41,7 @@ returns an example of the output you could expect to see from the real API.
 }
 ```
 
-The full mock service is available at [https://ui.thecape.ai/mock/full/api/0.1/](https://ui.thecape.ai/mock/full/api/0.1/).
+The full mock service is available at [http://localhost:5051/mock/full/api/0.1/](http://localhost:5051/mock/full/api/0.1/).
 It aims at giving responses describing "full" cases, this might include :
 
 * For a `login` endpoint : The login credentials are valid.
@@ -62,7 +62,7 @@ It aims at giving responses describing "full" cases, this might include :
 }
 ```
 
-The unlucky mock service is available at [https://ui.thecape.ai/mock/unlucky/api/0.1/](https://ui.thecape.ai/mock/unlucky/api/0.1/).
+The unlucky mock service is available at [http://localhost:5051/mock/unlucky/api/0.1/](http://localhost:5051/mock/unlucky/api/0.1/).
 It aims at giving responses describing "unlucky" cases, this might include :
 
 * for a `login` endpoint : The login credentials are invalid,
@@ -89,7 +89,7 @@ These are useful for checking how your code handles errors.
 }
 ```
 
-The error mock service is available at [https://ui.thecape.ai/mock/error/api/0.1/](https://ui.thecape.ai/mock/error/api/0.1/).
+The error mock service is available at [http://localhost:5051/mock/error/api/0.1/](http://localhost:5051/mock/error/api/0.1/).
 It aims at giving responses describing "server error" cases, this always returns the same response from all endpoints.
 
 ## Timeout mock service
@@ -100,5 +100,5 @@ It aims at giving responses describing "server error" cases, this always returns
 
 ```
 
-The timeout mock service is available at [https://ui.thecape.ai/mock/timeout/api/0.1/](https://ui.thecape.ai/mock/timeout/api/0.1/).
+The timeout mock service is available at [http://localhost:5051/mock/timeout/api/0.1/](http://localhost:5051/mock/timeout/api/0.1/).
 It aims at simulating a server hanging and never returning a response, this always has the same behaviour from all endpoints.
