@@ -41,7 +41,7 @@ ClientError.library = {
     type: 'unknown'
   },
   failedConnection: {
-    message: 'Unable to connect to backend. This service only provides a frontend, please run a cape-webservices instance to create your own backend, or connect to an existing backend by specifying a backend URL at runtime using the configuration URL paramater: http://yourfrontend.com/?configuration={"api": {"backendURL": "http://yourbackend.com:5050"} }',
+    message: 'Unable to connect to backend. Please run a cape-webservices instance or connect to an existing one. Then specify your backend using the URL paramater: http://yourfrontend.com/?configuration={"api": {"backendURL": "http://yourbackend.com:5050"} }',
     type: 'failedConnection'
   },
   malformedResponse: {
