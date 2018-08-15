@@ -508,7 +508,7 @@ In this documentation we will refer to the location of the frontend server as : 
 <tr>
 <td><strong>token</strong></td>
 <td>08aerv08ajkdp</td>
-<td>The token retrieved from <a href="#token-authentication">/get-user-token</a></td>
+<td>The token retrieved from <a href="#user-token-authentication">/get-user-token</a></td>
 </tr>
 <tr>
 <td><strong>question</strong></td>
@@ -3534,7 +3534,7 @@ Please note that the login and user token need to be unique or you will get an e
 <td>The password of the user.</td>
 </tr>
 <tr>
-<td>**superAdminToken</td>
+<td><strong>superAdminToken</strong></td>
 <td>REPLACEME</td>
 <td>The super admin token of the backend.</td>
 </tr>
@@ -3605,22 +3605,12 @@ Please note that all the user data, including documents, annotations and saved r
 <tr>
 <td><strong>userId</strong></td>
 <td>mylogin</td>
-<td>The login of the user.</td>
+<td>The login of the user to delete.</td>
 </tr>
 <tr>
-<td><strong>password</strong></td>
-<td>mypassword</td>
-<td>The password of the user.</td>
-</tr>
-<tr>
-<td>**superAdminToken</td>
+<td><strong>superAdminToken</strong></td>
 <td>REPLACEME</td>
 <td>The super admin token of the backend.</td>
-</tr>
-<tr>
-<td>token</td>
-<td>mytoken</td>
-<td>The user token of the user.</td>
 </tr>
 </tbody></table>
 <h3 id='result-2'>Result</h3>
@@ -3634,7 +3624,7 @@ Please note that all the user data, including documents, annotations and saved r
 <tr>
 <td>username</td>
 <td>mylogin</td>
-<td>For indicative purposes the login of the new user.</td>
+<td>For indicative purposes the login of the successfully deleted user.</td>
 </tr>
 </tbody></table>
 <h1 id='handling-results-with-lists'>Handling results with lists</h1>
