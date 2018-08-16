@@ -507,7 +507,7 @@ export default {
       dropdownCollection: dropdownCollection,
       dropdownModel: dropdownCollection[0],
       inputPlaceholder: 'Type a question here',
-      inputValue: 'Which is the oldest cat?',
+      inputValue: 'Who is the oldest cat?',
       inputProgress: false,
       // covers
       coversOpened: false,
