@@ -48,7 +48,7 @@
               </a>
               <a
                 v-bind:href="links.licensingURL">
-                Licensing
+                License
               </a>
               <template v-if="userIsLogged">
                 <a
@@ -384,7 +384,7 @@
 
         <!-- Heading -->
 
-        <h4>Licensing</h4>
+        <h4>License</h4>
 
         <!-- End heading -->
 
@@ -432,7 +432,7 @@
             <div class="menu">
               <a href="#">Home</a>
               <a v-bind:href="links.documentationURL">Documentation</a>
-              <a v-bind:href="links.licensingURL">Licensing</a>
+              <a v-bind:href="links.licensingURL">License</a>
             </div>
           </div>
         </div>
