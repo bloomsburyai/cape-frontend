@@ -579,7 +579,7 @@ export default {
       const coverageCollection = []
       _.each(data.coverage, (model) => {
         coverageCollection.push({
-          label: moment(model.time, moment.ISO_8601).fromNow(),
+          label: moment(model.created, moment.ISO_8601).fromNow(),
           value: Number(model.coverage).toFixed(2)
         })
       })
