@@ -579,7 +579,7 @@ export default {
       const coverageCollection = []
       _.each(data.coverage, (model) => {
         coverageCollection.push({
-          label: moment.unix(model.time).format('HH:mm'),
+          label: moment(model.time,moment.ISO_8601).fromNow(),
           value: Number(model.coverage).toFixed(2)
         })
       })
@@ -587,7 +587,7 @@ export default {
     },
 
     _computeTime (value) {
-      return moment.unix(value).fromNow()
+      return moment(value,moment.ISO_8601).fromNow()
     },
 
     _computeDuration (value) {
