@@ -81,7 +81,7 @@ Field | Example | Description
 text | "The sky is blue" | Optional inline text to be treated as a temporary document with id 'Inline Text'
 threshold | low | The minimum confidence of answers to return. Can be one of 'veryhigh', 'high', 'medium', 'low', 'verylow'.
 documentIds | document_1, document_2 or ["document_1","document_2"] | A json list or comma separated list of document ids to search within for answers. By default searches all documents.
-sourceType | document | Whether to search documents, saved replies or both. Can be one of 'document', 'saved_reply' or 'all'. Default: 'all'.
+sourceType | document | What type to read to answer documents, if 'document' only read documents, if 'saved_reply' only read annotations and saved replies, if 'all' read both types. Can be one of 'document', 'saved_reply' or 'all'. Default: 'all'.
 speedOrAccuracy | speed | Prioritise speed or accuracy in answers. Can be one of 'speed', 'accuracy' or 'balanced'. Default: 'balanced'.
 numberOfItems | 5 | The number of answers to return. Default: 1.
 offset | 0 | The starting index for the list of answers. If this value is '2', and 'numberOfItems' is '5', then answers 2 to 5 will be returned. Default: 0.
