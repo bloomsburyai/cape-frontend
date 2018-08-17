@@ -1,6 +1,9 @@
 # cape-frontend
 This package provides a management UI for Cape and the API documentation.
 
+Frontend demo is [here](http://bloomsbury.ai/landing.html) (only works if you already launched a Backend).
+
+
 ## Modifying the frontend
 
 To make changes to the frontend (mainly done with node.js and vue.js) :
