@@ -271,9 +271,9 @@
                 4
               </div>
               <div class="canvas">
-                <span class="comment"># Run the Cape docker image</span><br/>
-                docker run -p 5050:5050 bloomsburyai/cape<br/>
-                <span class="comment"># Get answer</span><br/>
+                <span class="comment"># Run Cape, frontend at http://localhost:5050</span><br/>
+                docker run -ti -p 5050:5050 -p 5051:5051 bloomsburyai/cape<br/>
+                <span class="comment"># Get answer from Backend</span><br/>
                 curl 'http://localhost:5050/api/0.1/answer?<span class="key">token</span>=<span class="value">demo</span>&<span class="key">question</span>=<span class="value">Who+heads+the+board?</span>&amp;<span class="key">text</span>=<span class="value">The+board+is+represented+by+the+chairman</span>'
               </div>
             </div>
